@@ -38,6 +38,7 @@ export default class Login extends Component {
     }, 
     { withCredentials: true }
     ).then( res => {
+      console.log("response login", res)
       if (res.data.logged_in){
       this.props.handleSuccesfulAuth(res.data)
       } // add error handling here
