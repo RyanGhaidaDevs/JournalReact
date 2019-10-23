@@ -5,14 +5,35 @@ import Home from './Home';
 
 
 export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    }
+
+  }
   render() {
     return (
       <div className='app'>
       <BrowserRouter>
-      <Switch>
-        <Route exat path={"/"} component={Home} /> 
-        <Route exat path={"/dashbaord"} component={DashBoard} /> 
-      </Switch>
+        <Switch>
+          <Route 
+            exact 
+            path={"/"} 
+            render={ props =>(
+              <Home {...props} loggedInStatus={this.state.loggedInStatus} /> 
+            )}
+          /> 
+          <Route 
+          exact 
+          path={"/dashboard"} 
+          render={ props =>(
+            <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
+          )}
+        /> 
+        </Switch>
       </BrowserRouter> 
       </div>
     );

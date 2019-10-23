@@ -40,7 +40,7 @@ export default class Registration extends Component {
       }
     }, 
     { withCredentials: true }
-    ).then( res => console.log("regsitration response", res)).catch( err => {
+    ).then( res => {console.log("regsitration response", res)}).catch( err => {
       console.log("error", error)
     });
   }
