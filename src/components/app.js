@@ -13,7 +13,17 @@ export default class App extends Component {
       user: {}
     }
 
+    this.handleLoggin = this.handleLoggin.bind(this)
+
   }
+
+  handleLoggin(data){
+    this.setState({
+      loggedInStatus: "LOGGED_IN",
+      user: data.user
+    })
+  }
+
   render() {
     return (
       <div className='app'>
@@ -23,7 +33,7 @@ export default class App extends Component {
             exact 
             path={"/"} 
             render={ props =>(
-              <Home {...props} loggedInStatus={this.state.loggedInStatus} /> 
+              <Home {...props} handleLoggin={this.handleLoggin} loggedInStatus={this.state.loggedInStatus} /> 
             )}
           /> 
           <Route 
