@@ -23,7 +23,7 @@ export default class Login extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     const {
       email, 
@@ -37,10 +37,10 @@ export default class Login extends Component {
       }
     }, 
     { withCredentials: true }
-    ).then( res => {
-      console.log("response login", res)
-      if (res.data.logged_in){
-      this.props.handleSuccesfulAuth(res.data)
+    ).then( response => {
+      // console.log("login response", response)
+      if (response.data.logged_in){
+      this.props.handleSuccesfulAuth(response.data)
       } // add error handling here
     }).catch( err => {
       console.log("login error", err)
