@@ -26,10 +26,11 @@ export default class Home extends Component  {
   }
 
   render(){
+    console.log(this.props)
     return(
       <div>
-        <h1> Home </h1>
-        <h1> {this.props.loggedInStatus}</h1> 
+        <h1> Home Page </h1>
+        <h3> Welcome {this.props.user.email} !</h3> 
         <button onClick={()=> this.handleLogoutClick()} > Logout </button>
         <Registration handleSuccesfulAuth={this.handleSuccesfulAuth}/>
         <Login handleSuccesfulAuth={this.handleSuccesfulAuth}/>

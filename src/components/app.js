@@ -19,9 +19,9 @@ export default class App extends Component {
   }
 
   checkLoginStatus(){
-    axios.get("http://localhost:3001/logged_in", {withCredentials: true}).then(res=> {
-      console.log(res)
-      if(res.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN"){
+    axios.get("http://localhost:3001/logged_in", {withCredentials: true}).then(response=> {
+      console.log(response)
+      if(response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN"){
         console.log("NOT_LOGGED_IN", response)
         this.setState({
           loggedInStatus: "LOGGED_IN",
@@ -67,7 +67,7 @@ export default class App extends Component {
             exact 
             path={"/"} 
             render={ props =>(
-              <Home {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} /> 
+              <Home {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
             )}
           /> 
           <Route 
