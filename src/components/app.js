@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import DashBoard from './DashBoard';
 import Home from './Home';
+import NavBar from './NavBar';
 
 
 export default class App extends Component {
@@ -76,7 +77,16 @@ export default class App extends Component {
           render={ props =>(
             <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
           )}
+          
         /> 
+          <Route 
+            exact 
+            path={"/test"} 
+            render={ props =>(
+              <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+            )}
+          />
+        
         </Switch>
       </BrowserRouter> 
       </div>
