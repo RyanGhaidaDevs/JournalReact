@@ -67,15 +67,21 @@ export default class App extends Component {
           <Route 
             exact 
             path={"/"} 
-            render={ props =>(
+            render={ props => (
+              <div> 
+              <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               <Home {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+              </div> 
             )}
           /> 
           <Route 
           exact 
           path={"/dashboard"} 
           render={ props =>(
+            <div> 
+            <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
             <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
+            </div> 
           )}
           
         /> 
