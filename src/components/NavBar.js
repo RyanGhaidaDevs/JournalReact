@@ -2,6 +2,8 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/ToolBar';
 import Typography from  '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
 
 const NavBar = (props) => {
   return(
@@ -14,6 +16,9 @@ const NavBar = (props) => {
           <Typography variant="h5" color="inherit">
             Logged in as: {props.user.email}
           </Typography>
+          <Button >
+            
+          </Button>
         </ToolBar>
       </AppBar> 
     </div>
