@@ -18,7 +18,8 @@ export default class App extends Component {
     this.handleLogin = this.handleLogin.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
   }
-
+  //click login on NavBar
+  //that needs to eb a calback function that send, as props, an event up to app and then passed into the Modal to
   checkLoginStatus(){
     axios.get("http://localhost:3001/logged_in", {withCredentials: true}).then(response=> {
       console.log(response)
