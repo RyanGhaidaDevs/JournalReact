@@ -5,6 +5,8 @@ import DashBoard from './DashBoard';
 import Home from './Home';
 import NavBar from './NavBar';
 import BugLog from './AddBugLog/BugLog';
+import Test from './Test';
+
 
 
 export default class App extends Component {
@@ -87,13 +89,13 @@ export default class App extends Component {
             )}
           /> 
           <Route 
-          exact 
-          path={"/dashboard"} 
-          render={ props =>(
-            <div> 
-            <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user } handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
-            <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
-            </div> 
+            exact 
+            path={"/dashboard"} 
+            render={ props =>(
+              <div> 
+              <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user } handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
+              <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
+              </div> 
           )}
           
         /> 
@@ -114,3 +116,4 @@ export default class App extends Component {
     );
   }
 }
+

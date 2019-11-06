@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import FormBugDetails from './FormBugDetails'
+import FormBugDetails  from './FormBugDetails';
 
-export class BugLog extends Component  {
+
+
+ class BugLog extends Component  {
   constructor(props) {
     super(props)
 
@@ -25,7 +27,7 @@ export class BugLog extends Component  {
     })
   }
 
-  prevStep = () => {
+  prevStep = ()=> {
     const { step } = this.state
 
     this.setState({
@@ -33,38 +35,48 @@ export class BugLog extends Component  {
     })
   }
 
-  handleChange(event) {
+  //weird syntax?
+  handleChange = input => event => {
     this.setState({[event.target.name]: event.target.value});
+  }
+
+  renderSwitch = (step, values) => {
+    switch(step) {
+      case 1: return (
+        <div> 
+          <FormBugDetails 
+            nextStep={this.nextStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        </div> 
+      )
+      case 2: return(
+        <h3> Solution Detils </h3> 
+      )
+      case 3: return(
+        <h3> Confirmation </h3>  
+      )
+      case 4: return(
+        <h3> Success </h3> 
+      )
+    }
   }
 
 
 
   render(){
 
-    // const { step, bugTitle,bugDescription,languagesInvolved,links,solution,notes} = this.state;
-    // const values = { bugTitle,bugDescription,languagesInvolved,links,solution,notes}
-    return (<div><h1> test </h1> </div>)
-    // switch(step) {
-    //   case 1: return (
-    //     <FormBugDetails 
-    //     nextStep={this.nextStep}
-    //     handleChange={this.handleChange}
-    //     values={values}
-    //     /> 
-    //   )
-    //   case 2: return(
-    //     <h3> Solution Detils </h3> 
-    //   )
-    //   case 3: return(
-    //     <h3> Confirmation </h3>  
-    //   )
-    //   case 4: return(
-    //     <h3> Success </h3> 
-    //   )
-    // }
-    
+    const { step, bugTitle,bugDescription,languagesInvolved,links,solution,notes} = this.state;
+    const values = { bugTitle,bugDescription,languagesInvolved,links,solution,notes}
+    return (
+      <div> 
+      {this.renderSwitch(step, values)} 
+      </div>
+    )
+
   }
 }
 
 
- 
+ export default BugLog
