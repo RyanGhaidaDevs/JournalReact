@@ -32,8 +32,7 @@ const NavBar = (props) => {
         <Typography variant="h4" className={classes.title}>
           BugLogger
         </Typography>
-        {props.user ? <Button color="inherit" onClick={()=> props.handleLogout()}>Logout</Button>: <Button color="inherit">Login</Button> }
-        
+        {props.user.email ? <Button color="inherit" onClick={()=> props.handleLogout()}>Logout</Button>: <div> <Button color="inherit">Login</Button> <Button color="inherit">Register</Button> </div> }
       </Toolbar>
     </AppBar>
   </div>
