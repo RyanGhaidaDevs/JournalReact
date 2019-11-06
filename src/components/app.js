@@ -81,7 +81,7 @@ export default class App extends Component {
             render={ props => (
               <div> 
               <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
-              <Home {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+              <Home {...props} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
           /> 
@@ -100,7 +100,7 @@ export default class App extends Component {
             exact 
             path={"/test"} 
             render={ props =>(
-              <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+              <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
             )}
           />
         

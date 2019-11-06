@@ -40,6 +40,12 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(4, 4, 4),
   },
+  NavBarButtons: {
+    marginRight: 12,
+    marginLeft: 12,
+    fontSize: '14px',
+    padding: '10px',
+  },
 }));
 
 const NavBar = (props) => {
@@ -66,6 +72,19 @@ const NavBar = (props) => {
         <Typography variant="h4" className={classes.title}>
           BugLogger
         </Typography>
+
+        <span className={classes.NavBarButtons}>
+        <Button className={classes.NavBarButtons} color="inherit" aria-label="Add">
+          Add a Bug Log
+        </Button>
+        <Button className={classes.NavBarButtons} color="inherit" aria-label="View">
+          View all Bug Logs
+        </Button>
+        <Button className={classes.NavBarButtons} color="inherit" aria-label="About">
+          About
+        </Button>
+      </span>
+
 
         {props.user.email ? 
         <Button style={ {fontSize: '14px'} } color="inherit" onClick={()=> props.handleLogout()}>
