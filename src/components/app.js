@@ -17,9 +17,9 @@ export default class App extends Component {
 
     this.handleLogin = this.handleLogin.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
+    this.handleSuccesfulAuth = this.handleSuccesfulAuth.bind(this)
   }
-  //click login on NavBar
-  //that needs to eb a calback function that send, as props, an event up to app and then passed into the Modal to
+
   checkLoginStatus(){
     axios.get("http://localhost:3001/logged_in", {withCredentials: true}).then(response=> {
       console.log(response)
@@ -43,6 +43,10 @@ export default class App extends Component {
   
   componentDidMount(){
     this.checkLoginStatus();
+  }
+
+  handleSuccesfulAuth(data) {
+    this.handleLogin(data)
   }
 
   handleLogout(){
@@ -76,7 +80,7 @@ export default class App extends Component {
             path={"/"} 
             render={ props => (
               <div> 
-              <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+              <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
               <Home {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
@@ -86,7 +90,7 @@ export default class App extends Component {
           path={"/dashboard"} 
           render={ props =>(
             <div> 
-            <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+            <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user } handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
             <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
             </div> 
           )}

@@ -49,8 +49,10 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div id="login">
+        <br/>
         <form onSubmit={this.handleSubmit} > 
+       <h3> Email: </h3>  
         <input 
           type="email" 
           name="email" 
@@ -59,6 +61,8 @@ export default class Login extends Component {
           onChange={this.handleChange} 
           required 
         />
+       
+       <h3> Password: </h3>
         <input 
           type="password" 
           name="password" 
