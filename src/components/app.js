@@ -20,6 +20,10 @@ export default class App extends Component {
     this.handleSuccesfulAuth = this.handleSuccesfulAuth.bind(this)
   }
 
+  componentDidMount(){
+    this.checkLoginStatus();
+  }
+
   checkLoginStatus(){
     axios.get("http://localhost:3001/logged_in", {withCredentials: true}).then(response=> {
       console.log(response)
@@ -40,13 +44,17 @@ export default class App extends Component {
       console.log("check login error", error)
     })
   }
-  
-  componentDidMount(){
-    this.checkLoginStatus();
-  }
 
   handleSuccesfulAuth(data) {
     this.handleLogin(data)
+  }
+
+  handleLogin(data){
+    console.log("data login", data)
+    this.setState({
+      loggedInStatus: "LOGGED_IN",
+      user: data.user
+    })
   }
 
   handleLogout(){
@@ -60,14 +68,6 @@ export default class App extends Component {
       console.log("logout error", err)
     })
 
-  }
-
-  handleLogin(data){
-    console.log("data login", data)
-    this.setState({
-      loggedInStatus: "LOGGED_IN",
-      user: data.user
-    })
   }
 
   render() {
