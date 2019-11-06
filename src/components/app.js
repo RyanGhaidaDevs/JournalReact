@@ -4,6 +4,7 @@ import axios from 'axios';
 import DashBoard from './DashBoard';
 import Home from './Home';
 import NavBar from './NavBar';
+import BugLog from './AddBugLog/BugLog';
 
 
 export default class App extends Component {
@@ -98,9 +99,12 @@ export default class App extends Component {
         /> 
           <Route 
             exact 
-            path={"/test"} 
+            path={"/addLog"} 
             render={ props =>(
+              <div> 
               <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
+              <BugLog {...props} user={this.state.user}/>
+              </div>
             )}
           />
         

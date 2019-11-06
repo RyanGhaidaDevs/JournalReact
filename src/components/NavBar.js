@@ -72,20 +72,17 @@ const NavBar = (props) => {
         <Typography variant="h4" className={classes.title}>
           BugLogger
         </Typography>
-
         <span className={classes.NavBarButtons}>
-        <Button className={classes.NavBarButtons} color="inherit" aria-label="Add">
-          Add a Bug Log
-        </Button>
-        <Button className={classes.NavBarButtons} color="inherit" aria-label="View">
-          View all Bug Logs
-        </Button>
-        <Button className={classes.NavBarButtons} color="inherit" aria-label="About">
-          About
-        </Button>
+          <Button className={classes.NavBarButtons} color="inherit" aria-label="Add">
+            Add a Bug Log
+          </Button>
+          <Button className={classes.NavBarButtons} color="inherit" aria-label="View">
+            View all Bug Logs
+          </Button>
+          <Button className={classes.NavBarButtons} color="inherit" aria-label="About">
+            About
+          </Button>
       </span>
-
-
         {props.user.email ? 
         <Button style={ {fontSize: '14px'} } color="inherit" onClick={()=> props.handleLogout()}>
         Logout
@@ -104,21 +101,16 @@ const NavBar = (props) => {
     </AppBar>
 
     <Modal
-        
         aria-labelledby="login"
         aria-describedby="login-modal"
         open={open}
         onClose={handleClose}
       >
-        
         <div style={modalStyle} className={classes.paper}>
-       
         <h2> Welcome back! Please login with your email and password below: </h2>
-        
         <Login handleSuccesfulAuth={props.handleSuccesfulAuth}/>
         </div>
     </Modal>
-    
   </div>
   );
 }
