@@ -27,7 +27,7 @@ export default class Home extends Component  {
       <div>
         <h1> Home Page </h1>
         <h3> Welcome {this.props.user.email} !</h3> 
-        <button onClick={()=> this.handleLogoutClick()} > Logout </button>
+        
         <Registration handleSuccesfulAuth={this.handleSuccesfulAuth}/>
         <Login handleSuccesfulAuth={this.handleSuccesfulAuth}/>
       </div>
