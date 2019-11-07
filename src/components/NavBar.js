@@ -70,9 +70,12 @@ const NavBar = (props) => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h4" className={classes.title}>
-          BugLogger
+          BugLogger - {props.user.email? props.user.email : "currently not logged in" }
         </Typography>
         <span className={classes.NavBarButtons}>
+          <Button className={classes.NavBarButtons} color="inherit" aria-label="About">
+            Home
+          </Button>
           <Button className={classes.NavBarButtons} color="inherit" aria-label="Add">
             Add a Bug Log
           </Button>

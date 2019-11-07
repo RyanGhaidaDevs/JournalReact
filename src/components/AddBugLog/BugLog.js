@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import FormBugDetails  from './FormBugDetails';
+import FormBugSolution from './FormBugSolution';
+import Confirmation from './Confimration';
 
 
 
@@ -52,10 +54,21 @@ import FormBugDetails  from './FormBugDetails';
         </div> 
       )
       case 2: return(
-        <h3> Solution Detils </h3> 
+        <div> 
+        <FormBugSolution 
+          nextStep={this.nextStep}
+          prevStep={this.prevStep}
+          handleChange={this.handleChange}
+          values={values}
+         
+        />
+      </div> 
       )
       case 3: return(
-        <h3> Confirmation </h3>  
+        <Confirmation 
+          nextStep={this.nextStep}
+          prevStep={this.prevStep}
+          values={values}/> 
       )
       case 4: return(
         <h3> Success </h3> 

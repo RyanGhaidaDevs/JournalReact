@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
+import { List, ListItem} from '@material-ui/core/List'
 import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
 
 
- class FormBugDetails extends Component {
+ class Confirmation extends Component {
   
    continue = event => {
      event.preventDefault();
+     //process form submital
      this.props.nextStep();
    }
+
+   back = event => {
+    event.preventDefault();
+    this.props.prevStep();
+  }
 
    
 
   render() {
 
-    const {values, handleChange} = this.props;
+    const { values: {bugTitle,bugDescription,languagesInvolved,links,solution,notes}} = this.props;
+    
 
     return (
       <MuiThemeProvider >
@@ -33,51 +41,63 @@ import Button  from '@material-ui/core/Button';
           
         </Grid>   
         <TextField 
-          placeholder="Add a title"
-          label="Bug Title"
-          name="bugTitle"
-          onChange={handleChange("Bug Title")}
-          defaultValue={values.bugTitle}
+          placeholder="relevant links"
+          label="Links"
+          name="links"
+          onChange={handleChange("Links")}
+          defaultValue={values.links}
           inputProps={{
             style: {fontSize: 28, padding: 20}
           }}
           />
           <TextField 
-          placeholder="Add details!"
-          label="Bug Description"
-          name="bugDescription"
+          placeholder="in your own words"
+          label="Bug Solution"
+          name="solution"
           multiline
           rows="12"
           rowsMax="100"
-          onChange={handleChange("Bug Details")}
-          defaultValue={values.bugDescription}
+          onChange={handleChange("Bug Solution")}
+          defaultValue={values.solution}
           inputProps={{
             style: {fontSize: 28, padding: 20},
             
           }}
           />
-          <TextField 
-          placeholder="i.e. JS,ruby..."
-          label="Languages involved"
-          name="languagesInvolved"
+            <TextField 
+          placeholder="add notes"
+          label="Bug Notes"
+          name="notes"
           multiline
-          rowsMax="10"
-          onChange={handleChange("Languages")}
-          defaultValue={values.languagesInvolved}
+          rows="12"
+          rowsMax="100"
+          onChange={handleChange("Bug Notes")}
+          defaultValue={values.notes}
           inputProps={{
-            style: {fontSize: 28, padding: 20} 
+            style: {fontSize: 28, padding: 20},
+            
           }}
           />
           
           <Button 
           label="continue"
-          primary={true}
+          primary={"true"}
           margin='15'
           onClick={this.continue}
           inputProps={{
             style: {fontSize: 28} 
           }}
           > Continue </Button>
+
+          <Button 
+          label="back"
+          primary={"false"}
+          margin='15'
+          onClick={this.back}
+          inputProps={{
+            style: {fontSize: 28} 
+          }}
+          > Back </Button>
           
          
         </Grid> 
@@ -87,6 +107,6 @@ import Button  from '@material-ui/core/Button';
     )
   }
 }
-export default FormBugDetails
+export default Confirmation;
 
 
