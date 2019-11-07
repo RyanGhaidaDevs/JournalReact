@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FormBugDetails  from './FormBugDetails';
 import FormBugSolution from './FormBugSolution';
 import Confirmation from './Confirmation';
+import axios from 'axios';
 
 
 
@@ -42,8 +43,34 @@ import Confirmation from './Confirmation';
     this.setState({[event.target.name]: event.target.value});
   }
 
-  handleSubmit = event => {
-    console.log(this.state)
+  handleSubmit= () => {
+    event.preventDefault();
+    const {
+      bugTitle, 
+      bugDescription,
+      languagesInvolved,
+      links,
+      solution,
+      notes
+    } = this.state 
+
+    axios.post("http://localhost:3001/logs",{
+      user: {
+        bugTitle: bugTitle,
+        bugDescription: bugDescription,
+        languagesInvolved: languagesInvolved,
+        links: links,
+        solution: solution,
+        notes: notes
+      }
+    }, 
+    { withCredentials: true }
+    ).then( response => {
+      console.log("posting log response", response)
+     // add error handling here
+    }).catch( err => {
+      console.log("posting log error", err)
+    });
   }
 
   renderSwitch = (step, values) => {

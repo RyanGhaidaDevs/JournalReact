@@ -49,6 +49,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = (props) => {
+  console.log("nav bar props", props.user.email)
+
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
