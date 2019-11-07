@@ -6,15 +6,27 @@ import axios from 'axios';
 
 export default class Home extends Component  {
   constructor(props) {
-    super(props)
+    super(props);
+
+    this.state = {
+      logs: [] 
+    }
+
   }
 
 
   componentDidMount() {
-    axios.get("http://localhost:3001/logged_in").then(axios.get("http://localhost:3001/logs")).then(res => res.json).then(data => console.log(data))
+     axios.get("http://localhost:3001/logs", { withCredentials: true }).then(x=> this.displayLogs(x))
   }
 
-  
+  displayLogs(data){
+    const logs = data.data.logs
+    console.log(logs)
+    this.setState({
+      logs: logs
+    }, ()=> console.log(this.state))
+  }
+
  
 
   render(){
@@ -23,7 +35,7 @@ export default class Home extends Component  {
       <div>
         <h1> Home Page </h1>
         <h3> Welcome {this.props.user.email} !</h3> 
-
+        {this.state.logs[0] ? this.state.logs[0].bugTitle : <h1>loading </h1>}
       </div>
     )
   }

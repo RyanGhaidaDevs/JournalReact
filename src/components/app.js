@@ -23,8 +23,9 @@ export default class App extends Component {
     this.handleSuccesfulAuth = this.handleSuccesfulAuth.bind(this)
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.checkLoginStatus();
+    console.log("checking login")
   }
 
   checkLoginStatus(){
