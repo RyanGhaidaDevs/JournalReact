@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FormBugDetails  from './FormBugDetails';
 import FormBugSolution from './FormBugSolution';
-import Confirmation from './Confimration';
+import Confirmation from './Confirmation';
 
 
 
@@ -42,6 +42,10 @@ import Confirmation from './Confimration';
     this.setState({[event.target.name]: event.target.value});
   }
 
+  handleSubmit = event => {
+    console.log(this.state)
+  }
+
   renderSwitch = (step, values) => {
     switch(step) {
       case 1: return (
@@ -65,14 +69,16 @@ import Confirmation from './Confimration';
       </div> 
       )
       case 3: return(
+        <div>
         <Confirmation 
           nextStep={this.nextStep}
           prevStep={this.prevStep}
-          values={values}/> 
+          values={values}
+          handleSubmit={this.handleSubmit}
+          /> 
+        </div>
       )
-      case 4: return(
-        <h3> Success </h3> 
-      )
+      
     }
   }
 
