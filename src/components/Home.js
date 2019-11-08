@@ -33,7 +33,7 @@ export default class Home extends Component  {
     
     return(
       <div>
-        <h1> Home Page </h1>
+        <h1> Logs Page </h1>
         <h3> Welcome {this.props.user.email} !</h3> 
         {this.state.logs[0] ? this.state.logs[0].bugTitle : <h1>loading </h1>}
       </div>
