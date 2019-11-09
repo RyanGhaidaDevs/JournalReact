@@ -82,7 +82,7 @@ export default class App extends Component {
         <Switch>
           <Route 
             exact 
-            path={"/"} 
+            path={"/home"} 
             render={ props => (
               <div> 
               <NavBar {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
