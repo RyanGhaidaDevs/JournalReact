@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import LogCard from './AddBugLog/LogCard'
 
-
-
-
 export default class Home extends Component  {
   constructor(props) {
     super(props);
@@ -14,7 +11,6 @@ export default class Home extends Component  {
     }
 
   }
-
 
   componentDidMount() {
      axios.get("http://localhost:3001/logs", { withCredentials: true }).then(x=> this.displayLogs(x))
@@ -28,14 +24,11 @@ export default class Home extends Component  {
     }, ()=> console.log(this.state))
   }
 
- 
-
   render(){
-    
+    console.log("Home Component", this.props)
     return(
       <div>
         <h1> Logs Page </h1>
-        <h3> Welcome {this.props.user.email} !</h3> 
         {this.state.logs[0] ? this.state.logs[0].bugTitle : <h1>loading </h1>}
         <LogCard /> 
       </div>
