@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import LogCard from './AddBugLog/LogCard';
 import Background from './Images/background.jpg';
+import { MuiThemeProvider } from '@material-ui/core/styles'
+import { Grid } from '@material-ui/core';
 
-//Logs Container
+
 
 
 
@@ -26,7 +28,7 @@ export default class LogsContainer extends Component  {
     if(logs){
       console.log(logs)
        return logs.map(log => {
-        return <LogCard key={log.id} log={log} />
+        return <Grid item sm> <LogCard key={log.id} log={log} /> </Grid> 
       })
     }
   }
@@ -36,7 +38,9 @@ export default class LogsContainer extends Component  {
     return(
       <div >
         <h1> Logs Page </h1>
+        <Grid container >
         {this.displayLogs()}
+        </Grid> 
       </div>
     )
   }

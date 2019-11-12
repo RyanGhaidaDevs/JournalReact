@@ -9,12 +9,12 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
-    maxWidth: 400
+    maxWidth: 400,
+    
   },
   bullet: {
     display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    margin: '0 30px',
   },
   title: {
     fontSize: 14,
