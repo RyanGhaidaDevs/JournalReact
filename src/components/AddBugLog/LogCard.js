@@ -32,26 +32,24 @@ export default function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.log}
+          {props.log.bugTitle}
         </Typography>
         <Typography variant="h5" component="h2">
-          be
-          {bull}
-          nev
-          {bull}o{bull}
-          lent
+        {props.log.bugDescription}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          adjective
+        {props.log.languagesInvolved}
         </Typography>
         <Typography variant="body2" component="p">
-          well meaning and kindly.
+          {props.log.solution}
           <br />
-          {'"a benevolent smile"'}
+          {'--------------'}
+          {'Notes:'}
+          {props.log.notes}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button >Edit | Delete</Button>
       </CardActions>
     </Card>
   );
