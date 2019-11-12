@@ -6,6 +6,7 @@ import LogsContainer from './LogsContainer';
 import NavBar from './NavBar';
 import BugLog from './AddBugLog/BugLog';
 import Test from './Test';
+import Section from './BackGround';
 
 
 

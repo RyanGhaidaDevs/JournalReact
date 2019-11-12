@@ -5,7 +5,7 @@ class Test extends Component {
   render() {
     return (
       <div>
-        About Page
+        <h1>Test Page</h1>
       </div>
     )
   }

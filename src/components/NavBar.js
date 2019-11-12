@@ -64,6 +64,12 @@ const NavBar = (props) => {
     setOpen(false);
   };
 
+  const logOut = () => {
+    props.handleLogout();
+    props.history.push("/about");
+   
+  }
+
 
   return(
     <div className={classes.root}>
@@ -90,7 +96,7 @@ const NavBar = (props) => {
           </Button>
         </span>
         {props.user.email ? 
-        <Button style={ {fontSize: '14px'} } color="inherit" onClick={()=> props.handleLogout()}>
+        <Button style={ {fontSize: '14px'} } color="inherit" onClick={logOut}>
         Logout
         </Button> 
         : 

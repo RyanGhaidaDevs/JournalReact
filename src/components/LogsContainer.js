@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LogCard from './AddBugLog/LogCard';
+import Background from './Images/background.jpg';
 
 //Logs Container
+
+
 
 export default class LogsContainer extends Component  {
   constructor(props) {
@@ -31,7 +34,7 @@ export default class LogsContainer extends Component  {
 
   render(){
     return(
-      <div>
+      <div >
         <h1> Logs Page </h1>
         {this.displayLogs()}
       </div>
