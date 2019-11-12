@@ -9,6 +9,7 @@ import { Grid } from '@material-ui/core';
 
 
 
+
 export default class LogsContainer extends Component  {
   constructor(props) {
     super(props);
@@ -16,6 +17,7 @@ export default class LogsContainer extends Component  {
     this.state = {
       logs: false 
     }
+
   }
 
   componentDidMount() {
@@ -28,9 +30,14 @@ export default class LogsContainer extends Component  {
     if(logs){
       console.log(logs)
        return logs.map(log => {
-        return <Grid item sm> <LogCard key={log.id} log={log} /> </Grid> 
+        return <Grid item sm> <LogCard key={log.id} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })
     }
+  }
+
+
+  handleDelete = (id) => {
+    axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
   }
 
 

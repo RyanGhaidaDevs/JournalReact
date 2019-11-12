@@ -10,7 +10,8 @@ const useStyles = makeStyles({
   card: {
     minWidth: 275,
     maxWidth: 400,
-    
+    border: "groove"
+
   },
   bullet: {
     display: 'inline-block',
@@ -49,7 +50,8 @@ export default function SimpleCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button >Edit | Delete</Button>
+        <Button > Edit </Button>
+        <Button onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
       </CardActions>
     </Card>
   );

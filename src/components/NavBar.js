@@ -82,6 +82,8 @@ const NavBar = (props) => {
           BugLogger - {props.user.email? props.user.email : "currently not logged in" }
         </Typography>
         <span className={classes.NavBarButtons}>
+        {props.user.email ? 
+        <div>
           <Button  onClick={()=> props.history.push("/dashboard")} className={classes.NavBarButtons} color="inherit" aria-label="About">
             Home
           </Button>
@@ -93,7 +95,9 @@ const NavBar = (props) => {
           </Button>
           <Button onClick={()=> props.history.push("/about")} className={classes.NavBarButtons} color="inherit" aria-label="About">
             About
-          </Button>
+          </Button> 
+          </div>
+          : "" }
         </span>
         {props.user.email ? 
         <Button style={ {fontSize: '14px'} } color="inherit" onClick={logOut}>
