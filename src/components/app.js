@@ -9,7 +9,6 @@ import Test from './Test';
 import Section from './BackGround';
 
 
-
 export default class App extends Component {
   constructor() {
     super();
@@ -20,11 +19,10 @@ export default class App extends Component {
       route: false
     }
 
-    this.handleLogin = this.handleLogin.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
-    this.handleSuccesfulAuth = this.handleSuccesfulAuth.bind(this)
-    this.handleNavbarNavigation = this.handleNavbarNavigation.bind(this)
-
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.handleSuccesfulAuth = this.handleSuccesfulAuth.bind(this);
+    this.handleNavbarNavigation = this.handleNavbarNavigation.bind(this);
   }
 
   componentWillMount(){
@@ -45,12 +43,8 @@ export default class App extends Component {
         })
       }
     }).catch(error => {
-      console.log("login error", error)
+      console.log("login error: !response.data.logged_in && this.state.loggedInStatus === LOGGED_IN", error)
     })
-  }
-
-  handleSuccesfulAuth(data) {
-    this.handleLogin(data)
   }
 
   handleLogin(data){
@@ -69,14 +63,8 @@ export default class App extends Component {
     axios.delete("http://localhost:3001/logout", {withCredentials: true}).catch(err => {
       console.log("logout error", err)
     })
-
   }
 
-  handleNavbarNavigation(route){
-    if(route === "VIEW ALL BUG LOGS"){
-      console.log(this.props)
-    }
-  }
 
   render() {
     return (
@@ -88,7 +76,7 @@ export default class App extends Component {
             path={"/logs"} 
             render={ props => (
               <div> 
-              <NavBar {...props} handleNavbarNavigation={this.handleNavbarNavigation} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
+              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
               <LogsContainer {...props} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
@@ -98,7 +86,7 @@ export default class App extends Component {
             path={"/dashboard"} 
             render={ props =>(
               <div> 
-              <NavBar {...props} handleNavbarNavigation={this.handleNavbarNavigation} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
+              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
               <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
               </div> 
           )}
@@ -109,7 +97,7 @@ export default class App extends Component {
             path={"/addLog"} 
             render={ props =>(
               <div> 
-              <NavBar {...props} handleNavbarNavigation={this.handleNavbarNavigation} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
+              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
               <BugLog {...props} user={this.state.user}/>
               </div>
             )}
@@ -124,7 +112,6 @@ export default class App extends Component {
               </div>
             )}
           />
-        
         </Switch>
       </BrowserRouter> 
       </div>

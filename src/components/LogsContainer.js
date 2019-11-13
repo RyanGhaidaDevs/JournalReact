@@ -7,9 +7,6 @@ import { Grid } from '@material-ui/core';
 
 
 
-
-
-
 export default class LogsContainer extends Component  {
   constructor(props) {
     super(props);
@@ -28,7 +25,6 @@ export default class LogsContainer extends Component  {
   displayLogs(){
     const logs = this.state.logs
     if(logs){
-      console.log(logs)
        return logs.map(log => {
         return <Grid item sm> <LogCard key={log.id} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })

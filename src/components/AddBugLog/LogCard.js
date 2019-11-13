@@ -9,8 +9,9 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
-    maxWidth: 400,
-    border: "groove"
+    maxWidth: 600,
+    border: "groove",
+
 
   },
   bullet: {
@@ -18,11 +19,22 @@ const useStyles = makeStyles({
     margin: '0 30px',
   },
   title: {
-    fontSize: 14,
+    fontSize: 24,
+    color: 'red'
   },
   pos: {
     marginBottom: 12,
   },
+  Delete: {
+    color: "red",
+    border: "groove"
+  },
+  Edit: {
+    color: "orange",
+    border: "groove",
+    background: "grey",
+    minWidth: 150
+  }
 });
 
 export default function SimpleCard(props) {
@@ -32,7 +44,7 @@ export default function SimpleCard(props) {
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography className={classes.title} color="textPrimary" gutterBottom>
           {props.log.bugTitle}
         </Typography>
         <Typography variant="h5" component="h2">
@@ -45,13 +57,15 @@ export default function SimpleCard(props) {
           {props.log.solution}
           <br />
           {'--------------'}
+          <br />
           {'Notes:'}
+          <br />
           {props.log.notes}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button > Edit </Button>
-        <Button onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
+        <Button className={classes.Edit}> Edit </Button>
+        <Button className={classes.Delete}onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
       </CardActions>
     </Card>
   );
