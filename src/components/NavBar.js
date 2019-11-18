@@ -124,7 +124,7 @@ const NavBar = (props) => {
       >
         <div style={modalStyle} className={classes.paper}>
         <h2> Welcome back! Please login with your email and password below: </h2>
-        <Login handleSuccesfulAuth={props.handleSuccesfulAuth}/>
+        <Login handleLogin={props.handleLogin}/>
         </div>
     </Modal>
   </div>
