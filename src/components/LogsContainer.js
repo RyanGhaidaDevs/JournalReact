@@ -12,7 +12,8 @@ export default class LogsContainer extends Component  {
     super(props);
 
     this.state = {
-      logs: false 
+      logs: false,
+      editLog: false
     }
 
   }
@@ -23,17 +24,31 @@ export default class LogsContainer extends Component  {
 
      
   displayLogs(){
-    const logs = this.state.logs
-    if(logs){
+    const logs = this.state.logs;
+    const editLog = this.state.editLog;
+    
+    if(logs && !editLog){
        return logs.map(log => {
-        return <Grid item sm> <LogCard key={log.id} handleDelete={this.handleDelete} log={log} /> </Grid> 
+        return <Grid item sm> <LogCard key={log.id} handleEdit={this.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })
     }
+    else if(!!editLog){
+      console.log(editLog, this.state)
+      return <Grid item sm> <LogCard key={editLog.id} class="edit" handleEditSubmit={this.handleEditSubmit} handleDelete={this.handleDelete} log={editLog} /> </Grid> 
+    }
+  }
+
+  handleEditSubmit=(update)=>{
+    console.log(update)
   }
 
 
   handleDelete = (id) => {
     axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
+  }
+
+  handleEdit = (log) => {
+    this.setState({editLog: log})
   }
 
 

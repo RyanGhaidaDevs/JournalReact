@@ -21,8 +21,6 @@ export default class App extends Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
-    this.handleSuccesfulAuth = this.handleSuccesfulAuth.bind(this);
-    this.handleNavbarNavigation = this.handleNavbarNavigation.bind(this);
   }
 
   componentWillMount(){
