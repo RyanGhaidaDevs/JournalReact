@@ -11,8 +11,6 @@ const useStyles = makeStyles({
     minWidth: 275,
     maxWidth: 600,
     border: "groove",
-
-
   },
   bullet: {
     display: 'inline-block',
