@@ -73,7 +73,7 @@ export default function SimpleCard(props) {
           </div> 
           : 
           <div> 
-            <Button className={classes.Edit} onClick={()=> props.handleEdit(props.log) }> Edit </Button>
+            <Button className={classes.Edit} onClick={()=> props.handleEdit(props.log, props) }> Edit </Button>
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
           </div>}
        </CardActions>

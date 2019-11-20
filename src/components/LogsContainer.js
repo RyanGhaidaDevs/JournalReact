@@ -20,23 +20,21 @@ export default class LogsContainer extends Component  {
 
   componentDidMount() {
      axios.get("http://localhost:3001/logs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
+     console.log(this.props)
   }
 
      
   displayLogs(){
     const logs = this.state.logs;
     const editLog = this.state.editLog;
-    
-    if(logs && !editLog){
-       return logs.map(log => {
-        return <Grid item sm> <LogCard key={log.id} handleEdit={this.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
+    const props = this.props;
+    if(logs){
+      return logs.map(log => {
+        return <Grid item sm> <LogCard {...props} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })
     }
-    else if(!!editLog){
-      console.log(editLog, this.state)
-      return <Grid item sm> <LogCard key={editLog.id} class="edit" handleEditSubmit={this.handleEditSubmit} handleDelete={this.handleDelete} log={editLog} /> </Grid> 
     }
-  }
+     
 
   handleEditSubmit=(update)=>{
     console.log(update)
@@ -47,16 +45,14 @@ export default class LogsContainer extends Component  {
     axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
   }
 
-  handleEdit = (log) => {
-    this.setState({editLog: log})
-  }
+ 
 
 
   render(){
     return(
       <div >
         <h1> Logs Page </h1>
-        <Grid container >
+        <Grid container>
         {this.displayLogs()}
         </Grid> 
       </div>

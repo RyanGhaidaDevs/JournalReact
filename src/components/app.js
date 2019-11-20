@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import BugLog from './AddBugLog/BugLog';
 import Test from './Test';
 import Section from './BackGround';
+import BugShowPage from './AddBugLog/BugShowPage';
 
 
 export default class App extends Component {
@@ -16,7 +17,8 @@ export default class App extends Component {
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {},
-      route: false
+      route: false,
+      editLog: {}
     }
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -63,6 +65,10 @@ export default class App extends Component {
     })
   }
 
+  handleEdit = (log, props) => {
+    this.setState({editLog: log}, () => props.history.push("/editLog"))
+  }
+
 
   render() {
     return (
@@ -75,7 +81,7 @@ export default class App extends Component {
             render={ props => (
               <div> 
               <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <LogsContainer {...props} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+              <LogsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
           /> 
@@ -110,6 +116,16 @@ export default class App extends Component {
               </div>
             )}
           />
+          <Route 
+            exact 
+            path={"/editLog"} 
+            render={ props => (
+              <div> 
+              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+              <BugShowPage {...props} loggedInStatus={this.state.loggedInStatus} log={this.state.editLog} user={this.state.user}/> 
+              </div> 
+            )}
+          /> 
         </Switch>
       </BrowserRouter> 
       </div>
