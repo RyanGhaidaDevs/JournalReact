@@ -26,7 +26,8 @@ export default class BugShowPage extends Component {
       languagesInvolved: this.props.log.languagesInvolved,
       links: this.props.log.links,
       solution: this.props.log.solution,
-      notes: this.props.log.notes
+      notes: this.props.log.notes,
+      id: this.props.log.id
     })
   }
   
@@ -37,30 +38,40 @@ export default class BugShowPage extends Component {
     })
   }
 
-  handleSubmit(event) {
+  handleSubmit= (event)=> {
     event.preventDefault();
-    debugger
-    // const {
-    //   email, 
-    //   password
-    // } = this.state 
 
-    // axios.post("http://localhost:3001/sessions",{
-    //   user: {
-    //     email: email, 
-    //     password: password, 
-    //   }
-    // }, 
-    // { withCredentials: true }
-    // ).then( response => {
-    //   // console.log("login response", response)
-    //   if (response.data.logged_in){
-    //   this.props.handleLogin(response.data)
-    //   } // add error handling here
-    // }).catch( err => {
-    //   console.log("login error", err)
-    // });
+    const {
+      bugTitle, 
+      bugDescription,
+      languagesInvolved,
+      links,
+      solution,
+      notes, 
+      id
+    } = this.state 
 
+    axios.patch("http://localhost:3001/logs",{
+      user: {
+        bugTitle: bugTitle,
+        bugDescription: bugDescription,
+        languagesInvolved: languagesInvolved,
+        links: links,
+        solution: solution,
+        notes: notes, 
+        id: id 
+      }
+    }, 
+    { withCredentials: true }
+    ).then( response => {
+      console.log("posting log response", response)
+      this.props.history.push("logs");
+     // add error handling here
+    }).catch( err => {
+      console.log("posting log error", err)
+    });
+
+    
   }
 
   render() {
