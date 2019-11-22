@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Button  from '@material-ui/core/Button';
+
 
 
 
@@ -56,6 +58,9 @@ export default class Login extends Component {
         <form onSubmit={this.handleSubmit} > 
        <h1> Email: </h1>  
         <input 
+        style={
+          {fontSize: 22} 
+        }
           className="login-form-input"
           type="email" 
           name="email" 
@@ -67,6 +72,9 @@ export default class Login extends Component {
        
        <h1> Password: </h1>
         <input 
+        style={
+          {fontSize: 22} 
+        }
           className="login-form-input"
           type="password" 
           name="password" 
@@ -75,7 +83,17 @@ export default class Login extends Component {
           onChange={this.handleChange} 
           required 
         />
-        <button type="submit"> Login </button>
+        
+        <Button 
+          label="submit"
+          type="submit"
+          primary={true}
+          margin='15'
+          style={
+            {fontSize: 28,
+            } 
+          }
+          > Login </Button>
         </form>
       </div>
     )
