@@ -24,19 +24,23 @@ body {
     
 }
 
-// #login{
-//    position: fixed;
-//    top: 55%;
-//    left: 50%;
-//    width: 100px;
-//    height: 100px;
-//    margin-top: -50px;
-//    margin-left: -50px;
-// }
+#login{
+   position: fixed;
+   top: 55%;
+   left: 50%;
+   width: 100px;
+   height: 300px;
+   margin-top: -50px;
+   margin-left: -50px;
+}
+
+.login-form-input{
+   width: 300px;
+}
 
 .modal-login{
     display: block; 
-    width: 1200px; 
+    width: 1400px; 
     padding-left: 0px;
 }
 
