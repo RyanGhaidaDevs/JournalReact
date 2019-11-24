@@ -42,7 +42,7 @@ export default class Login extends Component {
     }, 
     { withCredentials: true }
     ).then( response => {
-      // console.log("login response", response)
+      console.log("login response", response)
       if (response.data.logged_in){
       this.props.handleLogin(response.data)
       } // add error handling here
@@ -93,6 +93,7 @@ export default class Login extends Component {
             {fontSize: 28,
             } 
           }
+          color="inherit"
           > Login </Button>
         </form>
       </div>

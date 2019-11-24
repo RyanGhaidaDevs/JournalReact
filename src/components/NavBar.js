@@ -117,10 +117,10 @@ const NavBar = (props) => {
     </AppBar>
 
     <Modal
+        
         aria-labelledby="login"
         aria-describedby="login-modal"
         open={open}
-        onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
         <h2> Welcome back! Please login with your email and password below: </h2>
