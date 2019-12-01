@@ -18,7 +18,8 @@ export default class App extends Component {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {},
       route: false,
-      editLog: {}
+      editLog: {},
+      clear: false 
     }
 
     this.handleLogin = this.handleLogin.bind(this);
