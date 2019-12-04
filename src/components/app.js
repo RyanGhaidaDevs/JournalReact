@@ -19,7 +19,7 @@ export default class App extends Component {
       user: {},
       route: false,
       editLog: {},
-      clear: false 
+      clear: true 
     }
 
     this.handleLogin = this.handleLogin.bind(this);
