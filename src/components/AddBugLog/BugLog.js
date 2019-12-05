@@ -97,7 +97,6 @@ import axios from 'axios';
           prevStep={this.prevStep}
           handleChange={this.handleChange}
           values={values}
-         
         />
       </div> 
       )
