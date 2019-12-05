@@ -45,7 +45,7 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Links")}
           defaultValue={values.links}
           inputProps={{
-            style: {fontSize: 28, padding: 20}
+            style: {fontSize: 28, padding: 20, width: 500}
           }}
           />
           <TextField 
@@ -58,8 +58,7 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Bug Solution")}
           defaultValue={values.solution}
           inputProps={{
-            style: {fontSize: 28, padding: 20},
-            
+            style: {fontSize: 28, padding: 20, width: 500}, 
           }}
           />
             <TextField 
@@ -72,8 +71,7 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Bug Notes")}
           defaultValue={values.notes}
           inputProps={{
-            style: {fontSize: 28, padding: 20},
-            
+            style: {fontSize: 28, padding: 20, width: 500},
           }}
           />
           

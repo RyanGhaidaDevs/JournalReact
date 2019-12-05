@@ -30,15 +30,17 @@ import ListItemText from '@material-ui/core/ListItemText';
 
     const { values: {bugTitle,bugDescription,languagesInvolved,links,solution,notes}} = this.props;
     
-
+  //what are the qualities of Grid? 
+    
     return (
       <MuiThemeProvider >
-        <Grid container spacing={0} direction="column" alignItems="center" justify="center" style={{ minHeight: '100vh' }} >
-        <Grid item large >
-        </Grid>   
-          <List >
+        
+        <Grid container spacing={10} direction="column" alignItems="center" justify="center" style={{ minHeight: '100vh'}} >
+        
+          <List>
             <ListItem > 
-            <ListItemText primary="Bug Title" secondary={bugTitle} /> 
+            <ListItemText primary="Bug Title" secondary={bugTitle} style={{padding: 20, width: 500}}/> 
+         
             </ListItem>
             <ListItem > 
              <ListItemText 
