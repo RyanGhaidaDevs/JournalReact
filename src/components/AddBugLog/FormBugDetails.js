@@ -52,7 +52,7 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Bug Details")}
           defaultValue={values.bugDescription}
           inputProps={{
-            style: {fontSize: 28, padding: 40, width: 500, spacing: 10},
+            style: {fontSize: 18, padding: 40, width: 500},
             
           }}
           />
@@ -65,7 +65,7 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Languages")}
           defaultValue={values.languagesInvolved}
           inputProps={{
-            style: {fontSize: 28, padding: 40, width: 500} 
+            style: {fontSize: 18, padding: 40, width: 500} 
           }}
           />
           
