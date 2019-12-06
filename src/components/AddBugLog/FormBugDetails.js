@@ -39,7 +39,7 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Bug Title")}
           defaultValue={values.bugTitle}
           inputProps={{
-            style: {fontSize: 28, padding: 20, width: 500}
+            style: {fontSize: 28, padding: 40, width: 500}
           }}
           />
           <TextField 
@@ -52,7 +52,7 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Bug Details")}
           defaultValue={values.bugDescription}
           inputProps={{
-            style: {fontSize: 28, padding: 20, width: 500},
+            style: {fontSize: 28, padding: 40, width: 500, spacing: 10},
             
           }}
           />
@@ -65,7 +65,7 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Languages")}
           defaultValue={values.languagesInvolved}
           inputProps={{
-            style: {fontSize: 28, padding: 20, width: 500} 
+            style: {fontSize: 28, padding: 40, width: 500} 
           }}
           />
           

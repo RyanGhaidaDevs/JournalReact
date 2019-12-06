@@ -76,7 +76,7 @@ import ListItemText from '@material-ui/core/ListItemText';
           
           <Button 
           label="confirm & continue"
-          primary={"true"}
+          primary={true}
           margin='15'
           onClick={() => this.props.handleSubmit(event)}
           inputProps={{
