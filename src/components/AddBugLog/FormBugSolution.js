@@ -49,29 +49,29 @@ import Button  from '@material-ui/core/Button';
           }}
           />
           <TextField 
-          placeholder="in your own words"
+          placeholder="solution"
           label="Bug Solution"
           name="solution"
           multiline
-          rows="12"
+          rows="6"
           rowsMax="100"
           onChange={handleChange("Bug Solution")}
           defaultValue={values.solution}
           inputProps={{
-            style: {fontSize: 18, padding: 40, width: 500}, 
+            style: {fontSize: 18, padding: 40, width: 500,  lineHeight: 1}, 
           }}
           />
             <TextField 
-          placeholder="add notes"
-          label="Bug Notes"
+          placeholder="additional notes; dependecies, versions etc. "
+          label="Notes"
           name="notes"
           multiline
-          rows="12"
+          rows="6"
           rowsMax="100"
           onChange={handleChange("Bug Notes")}
           defaultValue={values.notes}
           inputProps={{
-            style: {fontSize: 18, padding: 40, width: 500},
+            style: {fontSize: 18, padding: 40, width: 500,lineHeight: 1},
           }}
           />
           

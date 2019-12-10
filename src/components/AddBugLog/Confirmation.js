@@ -39,36 +39,36 @@ import ListItemText from '@material-ui/core/ListItemText';
         
           <List>
             <ListItem > 
-            <ListItemText  primary={<span style={{fontSize: 38}}>Bug Title</span>} secondary={bugTitle} /> 
+            <ListItemText  primary={<span style={{fontSize: 28}}>Bug Title</span>} secondary={<span style={{fontSize: 18}}> {bugTitle}</span>} /> 
          
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 38}}> Description</span>}
+            primary={<span style={{fontSize: 28}}> Description</span>}
             secondary={<span style={{fontSize: 18}}> {bugDescription}</span>}
             />
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 38}}>Languages Involved</span>}
+            primary={<span style={{fontSize: 28}}>Languages Involved</span>}
             secondary={<span style={{fontSize: 18}}> {languagesInvolved}</span>}
             />
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 38}}> Relevant Links</span>}
+            primary={<span style={{fontSize: 28}}> Relevant Links</span>}
             secondary={<span style={{fontSize: 18}}> {links}</span>}
             />
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 38}}> Bug Solution</span>}
+            primary={<span style={{fontSize: 28}}> Bug Solution</span>}
             secondary={<span style={{fontSize: 18}}> {solution}</span>}
             />
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 38}}> Notes</span>}
+            primary={<span style={{fontSize: 28}}> Notes</span>}
             secondary={<span style={{fontSize: 18}}> {notes}</span>}
             />
             </ListItem>

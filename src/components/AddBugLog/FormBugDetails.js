@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
 
 
+
  class FormBugDetails extends Component {
   
    continue = event => {
@@ -33,7 +34,7 @@ import Button  from '@material-ui/core/Button';
           
         </Grid>   
         <TextField 
-          placeholder="Add a title"
+          placeholder="title and/or key words"
           label="Bug Title"
           name="bugTitle"
           onChange={handleChange("Bug Title")}
@@ -43,7 +44,7 @@ import Button  from '@material-ui/core/Button';
           }}
           />
           <TextField 
-          placeholder="Add details!"
+          placeholder="describe the context, nature and details of the bug"
           label="Bug Description"
           name="bugDescription"
           multiline
@@ -52,12 +53,12 @@ import Button  from '@material-ui/core/Button';
           onChange={handleChange("Bug Details")}
           defaultValue={values.bugDescription}
           inputProps={{
-            style: {fontSize: 18, padding: 40, width: 500},
+            style: {fontSize: 18, padding: 40, width: 500, lineHeight: 1},
             
           }}
           />
           <TextField 
-          placeholder="i.e. JS,ruby..."
+          placeholder="i.e. JS, Ruby..."
           label="Languages involved"
           name="languagesInvolved"
           multiline

@@ -37,7 +37,6 @@ const useStyles = makeStyles({
 
 export default function SimpleCard(props) {
 
-  console.log(props)
 
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
@@ -69,7 +68,6 @@ export default function SimpleCard(props) {
           <div> 
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
-
           </div> 
           : 
           <div> 
