@@ -66,9 +66,14 @@ const NavBar = (props) => {
 
   const logOut = () => {
     props.handleLogout();
-    props.history.push("/about");
+    props.history.push("/homepage");
    
   }
+
+  //three states for NavBar
+  // logged out 
+  //logged in w.o project 
+  //logged in w/ project 
 
 
   return(
@@ -84,12 +89,12 @@ const NavBar = (props) => {
         <span className={classes.NavBarButtons}>
         {props.user.email ? 
         <div>
-          <Button  onClick={()=> props.history.push("/dashboard")} className={classes.NavBarButtons} color="inherit" aria-label="About">
+          <Button  onClick={()=> props.history.push("/homepage")} className={classes.NavBarButtons} color="inherit" aria-label="About">
             Home
           </Button>
-          <Button onClick={()=> props.history.push("/addLog")} className={classes.NavBarButtons} color="inherit" aria-label="Add">
+          {props.projectSelected != false ? <Button onClick={()=> props.history.push("/addLog")} className={classes.NavBarButtons} color="inherit" aria-label="Add">
             Add a Bug Log
-          </Button>
+          </Button>: "" }
           <Button id="bugLogs" onClick={()=> props.history.push("/logs")} className={classes.NavBarButtons} color="inherit" aria-label="View">
             View all Bug Logs
           </Button>

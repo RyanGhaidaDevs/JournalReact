@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
-import DashBoard from './DashBoard';
 import LogsContainer from './LogsContainer';
 import NavBar from './NavBar';
 import BugLog from './AddBugLog/BugLog';
@@ -123,17 +122,7 @@ export default class App extends Component {
               </div> 
             )}
           /> 
-          <Route 
-            exact 
-            path={"/dashboard"} 
-            render={ props =>(
-              <div> 
-              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
-              </div> 
-          )}
-          
-        /> 
+         
           <Route 
             exact 
             path={"/addLog"} 
