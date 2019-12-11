@@ -19,7 +19,7 @@ export default class ProjectsContainer extends Component  {
   }
 
   handleClick = (event) => {
-    const projectId = event.target.id 
+    const projectId = event.target.id
     this.props.setSelectedProject(projectId);
   }
 
@@ -28,7 +28,7 @@ export default class ProjectsContainer extends Component  {
     const projects = this.props.projects;
     if(projects.length > 0){
       return projects.map(project => {
-        return <Grid item xl> <h1 onClick={this.handleClick} id={project.id}> {project.name}</h1></Grid> 
+        return <Grid item xl> <h1 onClick={this.handleClick}  id={project.id}> {project.name}</h1></Grid> 
       })
     }
     }

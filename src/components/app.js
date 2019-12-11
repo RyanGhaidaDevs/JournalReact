@@ -40,17 +40,17 @@ export default class App extends Component {
   }
 
   setSelectedProject(projectId){
-    if(projectId === this.state.projectSelected){
+    if(projectId == this.state.projectSelected.id){
       this.setState({
         projectSelected: false  
       })
-      console.log(false)
     }
     else{
-    this.setState({
-      projectSelected: projectId
-    })
-    console.log(projectId)
+
+      const p = this.state.projects.find((project) => project.id == projectId)
+      this.setState({
+        projectSelected: p
+      })
   }
 
   }
@@ -129,7 +129,7 @@ export default class App extends Component {
             render={ props =>(
               <div> 
               <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <BugLog {...props} user={this.state.user}/>
+              <BugLog {...props} projectSelected={this.state.projectSelected} user={this.state.user}/>
               </div>
             )}
           />

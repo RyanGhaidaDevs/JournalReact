@@ -84,8 +84,13 @@ const NavBar = (props) => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h4" className={classes.title}>
-          BugLogger - {props.user.email? props.user.email : "currently not logged in" }
+          BugLogger 
         </Typography>
+
+        {props.projectSelected ?  
+        <Typography variant="h4" className={classes.title}>
+          {props.projectSelected.name}  
+        </Typography>:  ""}
         <span className={classes.NavBarButtons}>
         {props.user.email ? 
         <div>
@@ -105,9 +110,14 @@ const NavBar = (props) => {
           : "" }
         </span>
         {props.user.email ? 
+        <div> 
         <Button style={ {fontSize: '14px'} } color="inherit" onClick={logOut}>
         Logout
         </Button> 
+        <Button style={ {fontSize: '14px'} } color="inherit" onClick={()=> props.history.push("/homepage")}>
+        { props.user.email }
+        </Button> 
+        </div> 
         : 
         <div> 
             <Button  onClick={handleOpen} style={ {fontSize: '14px'} } color="inherit">
