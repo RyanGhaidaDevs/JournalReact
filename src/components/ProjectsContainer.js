@@ -5,6 +5,7 @@ import Background from './Images/background.jpg';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
 import AddProject from './AddProject';
+import ProjectCard from './ProjectCard';
 
 
 
@@ -18,8 +19,7 @@ export default class ProjectsContainer extends Component  {
      axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data.data.projects))
   }
 
-  handleClick = (event) => {
-    const projectId = event.target.id
+  handleSelect= (projectId) => {
     this.props.setSelectedProject(projectId);
   }
 
@@ -28,7 +28,7 @@ export default class ProjectsContainer extends Component  {
     const projects = this.props.projects;
     if(projects.length > 0){
       return projects.map(project => {
-        return <Grid item xl> <h1 onClick={this.handleClick}  id={project.id}> {project.name}</h1></Grid> 
+        return <Grid item xl> <ProjectCard handleSelect={this.handleSelect}  id={project.id} project={project}> </ProjectCard></Grid> 
       })
     }
     }
