@@ -93,8 +93,8 @@ const NavBar = (props) => {
           <Button id="bugLogs" onClick={()=> props.history.push("/logs")} className={classes.NavBarButtons} color="inherit" aria-label="View">
             View all Bug Logs
           </Button>
-          <Button onClick={()=> props.history.push("/about")} className={classes.NavBarButtons} color="inherit" aria-label="About">
-            About
+          <Button onClick={()=> props.history.push("/addProject")} className={classes.NavBarButtons} color="inherit" aria-label="About">
+            Add Project
           </Button> 
           </div>
           : "" }

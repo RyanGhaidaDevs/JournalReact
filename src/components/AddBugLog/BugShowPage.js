@@ -109,7 +109,7 @@ export default class BugShowPage extends Component {
           label="Bug Description"
           name="bugDescription"
           multiline
-          rows="12"
+
           rowsMax="100"
           onChange={this.handleChange}
           defaultValue={this.props.log.bugDescription}
@@ -148,7 +148,7 @@ export default class BugShowPage extends Component {
           label="Bug Solution"
           name="solution"
           multiline
-          rows="6"
+         
           rowsMax="100"
           onChange={this.handleChange}
           defaultValue={this.props.log.solution}
@@ -162,7 +162,7 @@ export default class BugShowPage extends Component {
           label="Notes"
           name="notes"
           multiline
-          rows="6"
+          
           rowsMax="100"
           onChange={this.handleChange}
           defaultValue={this.props.log.notes}
@@ -187,69 +187,3 @@ export default class BugShowPage extends Component {
   }
 }
 
-{/* <div >
-        <br/>
-        <form onSubmit={this.handleSubmit} > 
-       <h1> Title: </h1>  
-        <input 
-          type="text" 
-          name="bugTitle" 
-          placeholder={this.state.bugTitle} 
-          value={this.state.bugTitle} 
-          onChange={this.handleChange} 
-          required 
-        />
-         <br/>
-         <h1> Description: </h1>  
-        <input 
-          type="text" 
-          name="bugDescription" 
-          placeholder={this.state.bugDescription} 
-          value={this.state.bugDescription} 
-          onChange={this.handleChange} 
-          required 
-        />
-         <br/>
-         <h1> Languages Involved: </h1>  
-        <input 
-          type="text" 
-          name="languagesInvolved" 
-          placeholder={this.state.languagesInvolved} 
-          value={this.state.languagesInvolved} 
-          onChange={this.handleChange} 
-          required 
-        />
-         <br/>
-         <h1> links: </h1>  
-        <input 
-          type="text" 
-          name="links" 
-          placeholder={this.state.links} 
-          value={this.state.links} 
-          onChange={this.handleChange} 
-          required 
-        />
-         <br/>
-         <h1> Solution: </h1>  
-        <input 
-          type="text" 
-          name="solution" 
-          placeholder={this.state.solution} 
-          value={this.state.solution} 
-          onChange={this.handleChange} 
-          required 
-        />
-         <br/>
-         <h1> Notes: </h1>  
-        <input 
-          type="text" 
-          name="notes" 
-          placeholder={this.state.notes} 
-          value={this.state.notes} 
-          onChange={this.handleChange} 
-          required 
-        />
-         <br/>
-        <button type="submit"> Submit Changes </button>
-        </form>
-      </div> */}

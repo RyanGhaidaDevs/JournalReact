@@ -6,9 +6,9 @@ import LogsContainer from './LogsContainer';
 import NavBar from './NavBar';
 import BugLog from './AddBugLog/BugLog';
 import Test from './Test';
-import Section from './BackGround';
+import { Redirect } from 'react-router';
 import BugShowPage from './AddBugLog/BugShowPage';
-
+import ProjectsContainer from './ProjectsContainer';
 
 export default class App extends Component {
   constructor() {
@@ -19,7 +19,9 @@ export default class App extends Component {
       user: {},
       route: false,
       editLog: {},
-      clear: true 
+      clear: true,
+      projects: [], 
+      projectSelected: {}
     }
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -77,6 +79,16 @@ export default class App extends Component {
       <div className='app'>
       <BrowserRouter>
         <Switch>
+        <Redirect from="/" exact to="/homepage" />
+        <Route 
+            path={"/homepage"} 
+            render={ props => (
+              <div> 
+              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+              <ProjectsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user} projects={this.state.projects} selectedProject={this.state.projectSelected}/> 
+              </div> 
+            )}
+          /> 
           <Route 
             exact 
             path={"/logs"} 
@@ -110,7 +122,7 @@ export default class App extends Component {
           />
           <Route 
             exact 
-            path={"/about"} 
+            path={"/addProject"} 
             render={ props =>(
               <div> 
               <NavBar {...props} handleNavbarNavigation={this.handleNavbarNavigation} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
