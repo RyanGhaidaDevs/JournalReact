@@ -63,7 +63,7 @@ import axios from 'axios';
     //Check back end for retrieval of package and send back response with succesfully created log
 
 
-    axios.post("http://localhost:3001/projects",{
+    axios.post("http://localhost:3001/logs",{
       user: {
         bugTitle: bugTitle,
         bugDescription: bugDescription,
