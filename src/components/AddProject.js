@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
 
 
-class Test extends Component {
+class AddProject extends Component {
 
   constructor(props){
     super(props);
@@ -91,4 +91,4 @@ class Test extends Component {
   }
 }
 
-export default Test
+export default AddProject

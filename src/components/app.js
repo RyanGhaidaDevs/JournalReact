@@ -5,7 +5,7 @@ import DashBoard from './DashBoard';
 import LogsContainer from './LogsContainer';
 import NavBar from './NavBar';
 import BugLog from './AddBugLog/BugLog';
-import Test from './Test';
+import AddProject from './AddProject';
 import { Redirect } from 'react-router';
 import BugShowPage from './AddBugLog/BugShowPage';
 import ProjectsContainer from './ProjectsContainer';
@@ -21,15 +21,39 @@ export default class App extends Component {
       editLog: {},
       clear: true,
       projects: [], 
-      projectSelected: {}
+      projectSelected: false 
     }
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.setProjects = this.setProjects.bind(this);
+    this.setSelectedProject = this.setSelectedProject.bind(this);
   }
 
   componentWillMount(){
     this.checkLoginStatus();
+  }
+
+  setProjects(projects){
+    this.setState({
+      projects: projects
+    })
+  }
+
+  setSelectedProject(projectId){
+    if(projectId === this.state.projectSelected){
+      this.setState({
+        projectSelected: false  
+      })
+      console.log(false)
+    }
+    else{
+    this.setState({
+      projectSelected: projectId
+    })
+    console.log(projectId)
+  }
+
   }
 
   checkLoginStatus(){
@@ -84,8 +108,8 @@ export default class App extends Component {
             path={"/homepage"} 
             render={ props => (
               <div> 
-              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <ProjectsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user} projects={this.state.projects} selectedProject={this.state.projectSelected}/> 
+              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+              <ProjectsContainer {...props} setSelectedProject={this.setSelectedProject} setProjects={this.setProjects}handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user} projects={this.state.projects} selectedProject={this.state.projectSelected}/> 
               </div> 
             )}
           /> 
@@ -94,7 +118,7 @@ export default class App extends Component {
             path={"/logs"} 
             render={ props => (
               <div> 
-              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
               <LogsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
@@ -104,7 +128,7 @@ export default class App extends Component {
             path={"/dashboard"} 
             render={ props =>(
               <div> 
-              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
               <DashBoard {...props} loggedInStatus={this.state.loggedInStatus} /> 
               </div> 
           )}
@@ -115,7 +139,7 @@ export default class App extends Component {
             path={"/addLog"} 
             render={ props =>(
               <div> 
-              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
               <BugLog {...props} user={this.state.user}/>
               </div>
             )}
@@ -125,8 +149,8 @@ export default class App extends Component {
             path={"/addProject"} 
             render={ props =>(
               <div> 
-              <NavBar {...props} handleNavbarNavigation={this.handleNavbarNavigation} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
-              <Test {...props} user={this.state.user}/>
+              <NavBar {...props} projectSelected={this.state.projectSelected} handleNavbarNavigation={this.handleNavbarNavigation} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
+              <AddProject {...props} user={this.state.user}/>
               </div>
             )}
           />

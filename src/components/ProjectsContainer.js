@@ -4,7 +4,7 @@ import LogCard from './AddBugLog/LogCard';
 import Background from './Images/background.jpg';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
-import Test from './Test';
+import AddProject from './AddProject';
 
 
 
@@ -15,16 +15,20 @@ export default class ProjectsContainer extends Component  {
   }
 
   componentDidMount() {
-     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => console.log(data))
+     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data.data.projects))
+  }
+
+  handleClick = (event) => {
+    const projectId = event.target.id 
+    this.props.setSelectedProject(projectId);
   }
 
      
   displayProjects(){
-    const propjects = this.props.projects;
-    
-    if(projects){
+    const projects = this.props.projects;
+    if(projects.length > 0){
       return projects.map(project => {
-        return <Grid item sm> <LogCard {...props} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
+        return <Grid item xl> <h1 onClick={this.handleClick} id={project.id}> {project.name}</h1></Grid> 
       })
     }
     }
@@ -45,7 +49,7 @@ export default class ProjectsContainer extends Component  {
   render(){
     return(
       <div >
-        {this.props.projects.length === 0 ? <Test/> : <h1> {this.desplayProjects()} </h1>}
+        {this.props.projects.length === 0 ? <AddProject/> : <div>  {this.displayProjects()}  </div> }
       </div>
     )
   }
