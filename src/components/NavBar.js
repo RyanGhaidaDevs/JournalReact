@@ -81,7 +81,7 @@ const NavBar = (props) => {
     <AppBar position="static">
       <Toolbar>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon />
+          <MenuIcon onClick={()=> props.history.push("/alllogs")}/>
         </IconButton>
         <Typography variant="h4" className={classes.title}>
           BugLogger 

@@ -5,6 +5,11 @@ import Background from './Images/background.jpg';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
 
+//Ability to see all user logs. 
+//Only edit and delete your own logs 
+//Comments and maybe like/dislike on each card 
+
+
 
 
 export default class AllLogs extends Component  {
@@ -19,20 +24,17 @@ export default class AllLogs extends Component  {
   }
 
   componentDidMount() {
-     axios.get("http://localhost:3001/alllogs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
+     axios.get("http://localhost:3001/alllogs", { withCredentials: true }).then( data => this.displayLogs(data.data.logs))
      console.log(this.props)
   }
 
      
-  displayLogs(){
-    debugger
-    // const logs = this.state.logs;
-    // const props = this.props;
-    // if(logs){
-    //   return logs.map(log => {
-    //     return <Grid item sm> <LogCard {...props} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
-    //   })
-    // }
+  displayLogs(logs){
+    if(logs){
+      return logs.map(log => {
+        return <Grid item sm> <LogCard {...props} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
+      })
+    }
     }
      
 

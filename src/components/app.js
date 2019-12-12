@@ -8,6 +8,7 @@ import AddProject from './AddProject';
 import { Redirect } from 'react-router';
 import BugShowPage from './AddBugLog/BugShowPage';
 import ProjectsContainer from './ProjectsContainer';
+import AllLogs from './AllLogs';
 
 export default class App extends Component {
   constructor() {
@@ -119,6 +120,16 @@ export default class App extends Component {
               <div> 
               <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
               <LogsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+              </div> 
+            )}
+          /> 
+          <Route 
+            exact 
+            path={"/alllogs"} 
+            render={ props => (
+              <div> 
+              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+              <AllLogs {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
           /> 
