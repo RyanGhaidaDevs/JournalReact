@@ -20,6 +20,10 @@ const useStyles = makeStyles({
     fontSize: 24,
     color: 'red'
   },
+  logs: {
+    fontSize: 18,
+    color: 'blue'
+  },
   pos: {
     marginBottom: 12,
   },
@@ -46,8 +50,11 @@ export default function ProjectCard(props) {
         <Typography className={classes.title} color="textPrimary" gutterBottom>
           {props.project.name}
         </Typography>
-       
-        
+        {props.project.logs ? <Typography className={classes.logs} color="textPrimary" gutterBottom>
+        Number of logs:  {props.project.logs.length}
+         </Typography> : <Typography className={classes.logs} color="textPrimary" gutterBottom>
+        No logs for this project yet! 
+         </Typography>  }
        
       </CardContent>
       <CardActions>
