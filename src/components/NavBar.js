@@ -18,7 +18,6 @@ function getModalStyle() {
     top: `${top}%`,
     left: `${left}%`,
     height: `25%`
-    // transform: `translate(-${top}%, -${left}%)`,
   };
 }
 
@@ -109,6 +108,9 @@ const NavBar = (props) => {
           </div>
           : "" }
         </span>
+        <Typography variant="h4" >
+          | 
+        </Typography>
         {props.user.email ? 
         <div> 
         <Button style={ {fontSize: '14px'} } color="inherit" onClick={logOut}>
