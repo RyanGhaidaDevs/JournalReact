@@ -23,12 +23,16 @@ export default class ProjectsContainer extends Component  {
     this.props.setSelectedProject(projectId);
   }
 
-     
+  handleDelete = (id) => {
+    console.log(id)
+     axios.delete(`http://localhost:3001/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.displayProjects())
+  }
+
   displayProjects(){
     const projects = this.props.projects;
     if(projects.length > 0){
       return projects.map(project => {
-        return <Grid item xl> <ProjectCard handleSelect={this.handleSelect}  id={project.id} project={project}> </ProjectCard></Grid> 
+        return <Grid item xl> <ProjectCard handleDelete={this.handleDelete} handleSelect={this.handleSelect}  id={project.id} project={project}> </ProjectCard></Grid> 
       })
     }
     }
@@ -37,14 +41,6 @@ export default class ProjectsContainer extends Component  {
   handleEditSubmit=(update)=>{
     console.log(update)
   }
-
-
-  // handleDelete = (id) => {
-  //   axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
-  // }
-
- 
-
 
   render(){
     return(

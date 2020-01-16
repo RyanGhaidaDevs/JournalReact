@@ -47,7 +47,6 @@ export default class App extends Component {
       })
     }
     else{
-
       const p = this.state.projects.find((project) => project.id == projectId)
       this.setState({
         projectSelected: p

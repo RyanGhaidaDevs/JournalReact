@@ -61,6 +61,9 @@ export default function ProjectCard(props) {
           <div> 
             <Button  onClick={()=> props.handleSelect(props.project.id) }> Select </Button>
           </div>
+          <div> 
+            <Button  onClick={()=> props.handleDelete(props.project.id) }> Delete </Button>
+          </div>
        </CardActions>
     </Card>
   );
