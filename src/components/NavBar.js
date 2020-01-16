@@ -60,6 +60,7 @@ const NavBar = (props) => {
   };
 
   const handleClose = () => {
+    console.log("clicked")
     setOpen(false);
   };
 
@@ -139,9 +140,12 @@ const NavBar = (props) => {
         aria-describedby="login-modal"
         open={open}
       >
+
         <div style={modalStyle} className={classes.paper}>
         <h2> Welcome back! Please login with your email and password below: </h2>
-        <Login handleLogin={props.handleLogin}/>
+        
+        <Login handleLogin={props.handleLogin} />
+        <Button onClick={handleClose}> X </Button>
         </div>
     </Modal>
   </div>
