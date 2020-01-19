@@ -44,8 +44,6 @@ import axios from 'axios';
   }
 
 
- 
-
   handleSubmit= (event) => {
     event.preventDefault();
     const {
@@ -57,12 +55,6 @@ import axios from 'axios';
       notes
     } = this.state 
 
-    console.log(this.props.projectSelected.id)
-    
-    //need to send project ID 
-    //Check back end for retrieval of package and send back response with succesfully created log
-
-
     axios.post("http://localhost:3001/logs",{
       user: {
         bugTitle: bugTitle,
@@ -71,7 +63,8 @@ import axios from 'axios';
         links: links,
         solution: solution,
         notes: notes, 
-        project_id: this.props.projectSelected.id
+        project_id: this.props.projectSelected.id, 
+        user_id: this.props.user.id
       }
     }, 
     { withCredentials: true }

@@ -21,16 +21,9 @@ import ListItemText from '@material-ui/core/ListItemText';
     this.props.prevStep();
   }
 
-
-
-   
-
   render() {
 
     const { values: {bugTitle,bugDescription,languagesInvolved,links,solution,notes}} = this.props;
-    
-  //what are the qualities of Grid? 
-  //should i default to something easier becasue im unwilling to learn material ui and flex box? 
     
     return (
       <MuiThemeProvider >
@@ -44,32 +37,32 @@ import ListItemText from '@material-ui/core/ListItemText';
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 28}}> Description</span>}
-            secondary={<span style={{fontSize: 18}}> {bugDescription}</span>}
+              primary={<span style={{fontSize: 28}}> Description</span>}
+              secondary={<span style={{fontSize: 18}}> {bugDescription}</span>}
             />
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 28}}>Languages Involved</span>}
-            secondary={<span style={{fontSize: 18}}> {languagesInvolved}</span>}
+              primary={<span style={{fontSize: 28}}>Languages Involved</span>}
+              secondary={<span style={{fontSize: 18}}> {languagesInvolved}</span>}
             />
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 28}}> Relevant Links</span>}
-            secondary={<span style={{fontSize: 18}}> {links}</span>}
+              primary={<span style={{fontSize: 28}}> Relevant Links</span>}
+              secondary={<span style={{fontSize: 18}}> {links}</span>}
             />
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 28}}> Bug Solution</span>}
-            secondary={<span style={{fontSize: 18}}> {solution}</span>}
+              primary={<span style={{fontSize: 28}}> Bug Solution</span>}
+              secondary={<span style={{fontSize: 18}}> {solution}</span>}
             />
             </ListItem>
             <ListItem > 
              <ListItemText 
-            primary={<span style={{fontSize: 28}}> Notes</span>}
-            secondary={<span style={{fontSize: 18}}> {notes}</span>}
+              primary={<span style={{fontSize: 28}}> Notes</span>}
+              secondary={<span style={{fontSize: 18}}> {notes}</span>}
             />
             </ListItem>
           </List> 

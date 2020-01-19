@@ -26,6 +26,7 @@ export default class AllLogs extends Component  {
   displayLogs(){
     const logs = this.state.logs;
     const props = this.props;
+    console.log(logs)
     if(logs){
       return logs.map(log => {
         return <Grid item sm> <LogCard {...props} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
