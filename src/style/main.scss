@@ -1,6 +1,6 @@
-html {
-    font-size: 62.5%; // 1rem is 10px
-}
+// html {
+//     font-size: 62.5%; // 1rem is 10px
+// }
 
 *,
 *::after,
@@ -11,19 +11,32 @@ html {
     font-family: 'montserrat';
 }
 
-body {
-    overflow-x: hidden;
+
+
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+ }
+ 
+ body {
     font-weight: normal;
+    margin: 0px;
+    min-height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-image: url('../components/Images/background2.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+//     font-weight: normal;
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: transparent;
-  
-    
-    
-}
-
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+//     text-rendering: optimizeLegibility;
+//     -webkit-tap-highlight-color: transparent;
+ }
 #login{
    position: fixed;
    top: 55%;
@@ -44,11 +57,13 @@ body {
     padding-left: 0px;
 }
 
-// .app {
-//     margin-top: 2rem;
-//     display: grid;
-//     justify-items: center;
-// }
+
 #test2 {
     font-size: 28
+}
+
+#alllogs{
+   
+
+  
 }
