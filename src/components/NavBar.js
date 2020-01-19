@@ -48,8 +48,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = (props) => {
-  console.log("nav bar props", props.user.email)
-
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
@@ -67,9 +65,7 @@ const NavBar = (props) => {
   const logOut = () => {
     props.handleLogout();
     props.history.push("/homepage");
-   
   }
-
 
   return(
     <div className={classes.root}>
@@ -83,21 +79,27 @@ const NavBar = (props) => {
         </Typography>
 
         {props.projectSelected ?  
-        <Typography variant="h4" className={classes.title}>
-          {props.projectSelected.name}  
-        </Typography>:  ""}
+          <Typography variant="h4" className={classes.title}>
+            {props.projectSelected.name}  
+          </Typography>
+          : 
+           ""
+           }
+
         <span className={classes.NavBarButtons}>
         {props.user.email ? 
         <div>
+          {props.projectSelected != false ? 
+            <Button onClick={()=> props.history.push("/addLog")} className={classes.NavBarButtons} color="inherit" aria-label="Add">
+              Add a Bug Log
+            </Button>
+          : 
+           "" 
+          }
 
-          {props.projectSelected != false ? <Button onClick={()=> props.history.push("/addLog")} className={classes.NavBarButtons} color="inherit" aria-label="Add">
-            Add a Bug Log
-          </Button>: "" }
-          
           <Button  onClick={()=> props.history.push("/homepage")} className={classes.NavBarButtons} color="inherit" aria-label="About">
             Home
           </Button>
-          
           <Button id="bugLogs" onClick={()=> props.history.push("/logs")} className={classes.NavBarButtons} color="inherit" aria-label="View">
             View all Bug Logs
           </Button>
@@ -105,46 +107,42 @@ const NavBar = (props) => {
             Add Project
           </Button> 
           </div>
-          : "" }
+          : 
+          "" 
+          }
         </span>
         <Typography variant="h4" >
           | 
         </Typography>
+
         {props.user.email ? 
         <div> 
-        <Button style={ {fontSize: '14px'} } color="inherit" onClick={logOut}>
-        Logout
-        </Button> 
-        <Button style={ {fontSize: '14px'} } color="inherit" onClick={()=> props.history.push("/homepage")}>
-        { props.user.email }
-        </Button> 
-        </div> 
+          <Button style={ {fontSize: '14px'} } color="inherit" onClick={logOut}>
+          Logout
+          </Button> 
+          <Button style={ {fontSize: '14px'} } color="inherit" onClick={()=> props.history.push("/homepage")}>
+            { props.user.email }
+          </Button> 
+        </div>  
         : 
         <div> 
             <Button  onClick={handleOpen} style={ {fontSize: '14px'} } color="inherit">
-            Login
+              Login
             </Button> 
             <Button style={ {fontSize: '14px'} } color="inherit">
-            Register
+              Register
             </Button> 
         </div> 
         }
       </Toolbar>
     </AppBar>
 
-    <Modal
-        
-        aria-labelledby="login"
-        aria-describedby="login-modal"
-        open={open}
-      >
-
-        <div style={modalStyle} className={classes.paper}>
-        <h2> Welcome back! Please login with your email and password below: </h2>
-        
+    <Modal aria-labelledby="login" aria-describedby="login-modal" open={open}>
+      <div style={modalStyle} className={classes.paper}>
+      <h2> Welcome back! Please login with your email and password below: </h2>
         <Login handleLogin={props.handleLogin} />
         <Button onClick={handleClose}> X </Button>
-        </div>
+      </div>
     </Modal>
   </div>
   );
