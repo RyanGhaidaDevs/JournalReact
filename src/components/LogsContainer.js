@@ -27,9 +27,10 @@ export default class LogsContainer extends Component  {
     const logs = this.state.logs;
     const editLog = this.state.editLog;
     const props = this.props;
+    console.log(logs)
     if(logs){
       return logs.map(log => {
-        return <Grid item sm> <LogCard {...props} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
+        return <Grid item sm> <LogCard {...props} user={log.user_email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })
     }
     }

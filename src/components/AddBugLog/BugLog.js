@@ -64,7 +64,8 @@ import axios from 'axios';
         solution: solution,
         notes: notes, 
         project_id: this.props.projectSelected.id, 
-        user_id: this.props.user.id
+        user_id: this.props.user.id,
+        user_email: this.props.user.email
       }
     }, 
     { withCredentials: true }

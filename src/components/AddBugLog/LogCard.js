@@ -20,6 +20,10 @@ const useStyles = makeStyles({
     fontSize: 24,
     color: 'red'
   },
+  user: {
+    fontSize: 14,
+    color: 'blue'
+  },
   pos: {
     marginBottom: 12,
   },
@@ -44,6 +48,9 @@ export default function SimpleCard(props) {
   return (
     <Card className={classes.card}>
       <CardContent>
+      <Typography className={classes.user} color="textPrimary" gutterBottom>
+          {props.user}
+        </Typography>
         <Typography className={classes.title} color="textPrimary" gutterBottom>
           {props.log.bugTitle}
         </Typography>
