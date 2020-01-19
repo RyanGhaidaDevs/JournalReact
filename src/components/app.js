@@ -34,30 +34,8 @@ export default class App extends Component {
     this.checkLoginStatus();
   }
 
-  setProjects(projects){
-    this.setState({
-      projects: projects
-    })
-  }
-
-  setSelectedProject(projectId){
-    if(projectId == this.state.projectSelected.id){
-      this.setState({
-        projectSelected: false  
-      })
-    }
-    else{
-      const p = this.state.projects.find((project) => project.id == projectId)
-      this.setState({
-        projectSelected: p
-      })
-  }
-
-  }
-
   checkLoginStatus(){
-    axios.get("http://localhost:3001/logged_in", {withCredentials: true}).then(response=> {
- 
+    axios.get("http://localhost:3001/logged_in", {withCredentials: true}).then(response => {
       if(response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN"){
         this.setState({
           loggedInStatus: "LOGGED_IN",
@@ -86,16 +64,34 @@ export default class App extends Component {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {}
     })
-
-    axios.delete("http://localhost:3001/logout", {withCredentials: true}).catch(err => {
-      console.log("logout error", err)
+    axios.delete("http://localhost:3001/logout", {withCredentials: true}).catch(error => {
+      console.log("logout error", error)
     })
+  }
+
+  setProjects(projects){
+    this.setState({
+      projects: projects
+    })
+  }
+
+  setSelectedProject(projectId){
+    if(projectId == this.state.projectSelected.id){
+      this.setState({
+        projectSelected: false  
+      })
+    }
+    else{
+      const p = this.state.projects.find((project) => project.id == projectId)
+      this.setState({
+        projectSelected: p
+      })
+    }
   }
 
   handleEdit = (log, props) => {
     this.setState({editLog: log}, () => props.history.push("/editLog"))
   }
-
 
   render() {
     return (
@@ -107,8 +103,8 @@ export default class App extends Component {
             path={"/homepage"} 
             render={ props => (
               <div> 
-              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <ProjectsContainer {...props} setSelectedProject={this.setSelectedProject} setProjects={this.setProjects}handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user} projects={this.state.projects} selectedProject={this.state.projectSelected}/> 
+                <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+                <ProjectsContainer {...props} setSelectedProject={this.setSelectedProject} setProjects={this.setProjects}handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user} projects={this.state.projects} selectedProject={this.state.projectSelected}/> 
               </div> 
             )}
           /> 
@@ -117,8 +113,8 @@ export default class App extends Component {
             path={"/logs"} 
             render={ props => (
               <div> 
-              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <LogsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+                <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+                <LogsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
           /> 
@@ -127,19 +123,18 @@ export default class App extends Component {
             path={"/alllogs"} 
             render={ props => (
               <div> 
-              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <AllLogs {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+                <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+                <AllLogs {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
           /> 
-         
           <Route 
             exact 
             path={"/addLog"} 
             render={ props =>(
               <div> 
-              <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <BugLog {...props} projectSelected={this.state.projectSelected} user={this.state.user}/>
+                <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+                <BugLog {...props} projectSelected={this.state.projectSelected} user={this.state.user}/>
               </div>
             )}
           />
@@ -148,8 +143,8 @@ export default class App extends Component {
             path={"/addProject"} 
             render={ props =>(
               <div> 
-              <NavBar {...props} projectSelected={this.state.projectSelected} handleNavbarNavigation={this.handleNavbarNavigation} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
-              <AddProject {...props} user={this.state.user}/>
+                <NavBar {...props} projectSelected={this.state.projectSelected} handleNavbarNavigation={this.handleNavbarNavigation} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} handleSuccesfulAuth={this.handleSuccesfulAuth}/> 
+                <AddProject {...props} user={this.state.user}/>
               </div>
             )}
           />
@@ -158,8 +153,8 @@ export default class App extends Component {
             path={"/editLog"} 
             render={ props => (
               <div> 
-              <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-              <BugShowPage {...props} loggedInStatus={this.state.loggedInStatus} log={this.state.editLog} user={this.state.user}/> 
+                <NavBar {...props}  handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+                <BugShowPage {...props} loggedInStatus={this.state.loggedInStatus} log={this.state.editLog} user={this.state.user}/> 
               </div> 
             )}
           /> 

@@ -19,13 +19,16 @@ export default class ProjectsContainer extends Component  {
      axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data.data.projects))
   }
 
+
+
+
   handleSelect= (projectId) => {
     this.props.setSelectedProject(projectId);
   }
 
   handleDelete = (id) => {
     console.log(id)
-     axios.delete(`http://localhost:3001/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.displayProjects())
+     axios.delete(`http://localhost:3001/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.props.setProjects(data.data.projects))
   }
 
   displayProjects(){
