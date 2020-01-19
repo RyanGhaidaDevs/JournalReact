@@ -25,7 +25,7 @@ export default class AllLogs extends Component  {
     if(logs){
       return logs.map(log => {
         return <Grid item sm> 
-          <LogCard {...props} user={log.user_email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
+          <LogCard {...props} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
         </Grid> 
       })
     }

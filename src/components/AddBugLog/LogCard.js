@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 
 export default function SimpleCard(props) {
 
-  console.log("props", props)
+
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
@@ -49,7 +49,7 @@ export default function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
       <Typography className={classes.user} color="textPrimary" gutterBottom>
-          {props.user}
+          created by: {props.log.user_email}
         </Typography>
         <Typography className={classes.title} color="textPrimary" gutterBottom>
           {props.log.bugTitle}
@@ -70,7 +70,8 @@ export default function SimpleCard(props) {
           {props.log.notes}
         </Typography>
       </CardContent>
-      <CardActions>
+      {props.log.user_email === props.user ? 
+         <CardActions>
         {props.class === "edit" ? 
           <div> 
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
@@ -81,7 +82,11 @@ export default function SimpleCard(props) {
             <Button className={classes.Edit} onClick={()=> props.handleEdit(props.log, props) }> Edit </Button>
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
           </div>}
-       </CardActions>
+       </CardActions> 
+      
+       :
+        "" }
+      
     </Card>
   );
 }

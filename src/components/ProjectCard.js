@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 export default function ProjectCard(props) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
-
+  console.log(props)
   return (
     
     <Card className={classes.card}>
@@ -50,9 +50,12 @@ export default function ProjectCard(props) {
         <Typography className={classes.title} color="textPrimary" gutterBottom>
           {props.project.name}
         </Typography>
-        {props.project.logs ? <Typography className={classes.logs} color="textPrimary" gutterBottom>
+        {props.project.logs ? 
+        <Typography className={classes.logs} color="textPrimary" gutterBottom>
         Number of logs:  {props.project.logs.length}
-         </Typography> : <Typography className={classes.logs} color="textPrimary" gutterBottom>
+         </Typography> 
+         : 
+         <Typography className={classes.logs} color="textPrimary" gutterBottom>
         No logs for this project yet! 
          </Typography>  }
        

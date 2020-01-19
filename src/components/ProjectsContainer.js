@@ -15,10 +15,11 @@ export default class ProjectsContainer extends Component  {
   }
 
   componentDidMount() {
-     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data.data.projects)).then(data => showData(data))
+    // axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => console.log(data))
+     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data))
   }
 
-  handleData = (data) => {
+  showData = (data) => {
     console.log(data)
   }
 
