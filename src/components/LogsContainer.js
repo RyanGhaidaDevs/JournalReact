@@ -20,7 +20,6 @@ export default class LogsContainer extends Component  {
 
   componentDidMount() {
      axios.get("http://localhost:3001/logs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
-     console.log(this.props)
   }
 
      

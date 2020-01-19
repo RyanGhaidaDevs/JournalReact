@@ -9,18 +9,18 @@ import ProjectCard from './ProjectCard';
 
 
 
-
 export default class ProjectsContainer extends Component  {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data.data.projects))
+     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data.data.projects)).then(data => showData(data))
   }
 
-
-
+  handleData = (data) => {
+    console.log(data)
+  }
 
   handleSelect= (projectId) => {
     this.props.setSelectedProject(projectId);
@@ -38,7 +38,7 @@ export default class ProjectsContainer extends Component  {
         return <Grid item xl> <ProjectCard handleDelete={this.handleDelete} handleSelect={this.handleSelect}  id={project.id} project={project}> </ProjectCard></Grid> 
       })
     }
-    }
+  }
      
 
   handleEditSubmit=(update)=>{

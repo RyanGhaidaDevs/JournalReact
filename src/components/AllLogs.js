@@ -10,44 +10,36 @@ import { Grid } from '@material-ui/core';
 //Comments and maybe like/dislike on each card 
 
 
-
-
 export default class AllLogs extends Component  {
   constructor(props) {
     super(props);
 
     this.state = {
       logs: false,
-    
     }
-
   }
 
   componentDidMount() {
-     axios.get("http://localhost:3001/alllogs", { withCredentials: true }).then( data => this.displayLogs(data.data.logs))
-     console.log(this.props)
+     axios.get("http://localhost:3001/alllogs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
   }
 
-     
-  displayLogs(logs){
+  displayLogs(){
+    const logs = this.state.logs;
+    const props = this.props;
     if(logs){
       return logs.map(log => {
         return <Grid item sm> <LogCard {...props} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })
     }
-    }
+  }
      
-
   handleEditSubmit=(update)=>{
     console.log(update)
   }
 
-
   // handleDelete = (id) => {
   //   axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
   // }
-
- 
 
 
   render(){

@@ -9,6 +9,7 @@ import { Redirect } from 'react-router';
 import BugShowPage from './AddBugLog/BugShowPage';
 import ProjectsContainer from './ProjectsContainer';
 import AllLogs from './AllLogs';
+import Registration from './auth/Registration';
 
 export default class App extends Component {
   constructor() {
@@ -99,6 +100,15 @@ export default class App extends Component {
       <BrowserRouter>
         <Switch>
         <Redirect from="/" exact to="/homepage" />
+        <Route 
+            path={"/registration"} 
+            render={ props => (
+              <div> 
+                <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+                <Registration {...props} /> 
+              </div> 
+            )}
+          /> 
         <Route 
             path={"/homepage"} 
             render={ props => (

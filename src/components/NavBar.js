@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Modal from '@material-ui/core/Modal';
 import Login from './auth/Login';
+import BugReportIcon from '@material-ui/icons/BugReport';
 import Registration from './auth/Registration';
 
 function getModalStyle() {
@@ -64,7 +65,7 @@ const NavBar = (props) => {
 
   const logOut = () => {
     props.handleLogout();
-    props.history.push("/homepage");
+    props.history.push("/alllogs");
   }
 
   return(
@@ -72,7 +73,7 @@ const NavBar = (props) => {
     <AppBar position="static">
       <Toolbar>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon onClick={()=> props.history.push("/alllogs")}/>
+          <BugReportIcon   fontSize="large" onClick={()=> props.history.push("/alllogs")}/>
         </IconButton>
         <Typography variant="h4" className={classes.title}>
           BugLogger 
@@ -129,7 +130,7 @@ const NavBar = (props) => {
             <Button  onClick={handleOpen} style={ {fontSize: '14px'} } color="inherit">
               Login
             </Button> 
-            <Button style={ {fontSize: '14px'} } color="inherit">
+            <Button onClick={()=> props.history.push("/registration")} style={ {fontSize: '14px'} } color="inherit">
               Register
             </Button> 
         </div> 
