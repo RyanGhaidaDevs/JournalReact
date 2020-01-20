@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LogCard from './AddBugLog/LogCard';
-import Background from './Images/background.jpg';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 
-export default class AllLogs extends Component  {
+
+const styles = {
+  Search: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)',
+    width: 800,
+    margin: 20,
+    
+  },
+
+  };
+
+class AllLogs extends Component  {
   constructor(props) {
     super(props);
 
     this.state = {
       logs: false,
+      search: "",
+      filterdLogs: []
     }
+
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
   componentDidMount() {
@@ -30,19 +50,31 @@ export default class AllLogs extends Component  {
       })
     }
   }
-     
-  handleEditSubmit=(update)=>{
-    console.log(update)
+    
+
+  handleChange(event){
+    this.setState({
+      [event.target.name]: event.target.value
+    }, ()=> console.log(this.state)) 
+
+   
+  
   }
 
-  // handleDelete = (id) => {
-  //   axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
-  // }
-
-
   render(){
+    const { classes } = this.props;
+
     return(
-      <div id="alllogs">
+      <div id="alllogs" class='searchParent'>
+      <div class='searchChild'> 
+      <TextField
+        className={classes.Search}
+        placeholder="Search"
+        name="search"
+        inputProps={{ style: {textAlign: 'center'} }}
+        onChange={this.handleChange}     
+      />
+    </div> 
         <Grid container>
         {this.displayLogs()}
         </Grid> 
@@ -51,5 +83,6 @@ export default class AllLogs extends Component  {
   }
 }
 
+export default withStyles(styles)(AllLogs);
 
  
