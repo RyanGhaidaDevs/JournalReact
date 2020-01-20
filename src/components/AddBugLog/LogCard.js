@@ -15,10 +15,30 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 24,
+    color: 'black'
+  },
+  description: {
+    fontSize: 16,
+    color: 'grey'
+  },
+  languages: {
+    fontSize: 14,
+    color: 'grey'
+  },
+  solution: {
+    fontSize: 16,
     color: 'blue'
+  },
+  notes: {
+    fontSize: 12,
+    color: 'grey'
   },
   user: {
     fontSize: 14,
+    color: 'orange'
+  },
+  date: {
+    fontSize: 12,
     color: 'green'
   },
   pos: {
@@ -40,33 +60,35 @@ const useStyles = makeStyles({
 });
 
 export default function SimpleCard(props) {
-
-
+  
   const classes = useStyles();
-
+ 
   return (
     <Card className={classes.card}>
       <CardContent>
       <Typography className={classes.user} color="textPrimary" gutterBottom>
-          created by: {props.log.user_email}
+          User: {props.log.user_email}
+        </Typography>
+        <Typography className={classes.date} color="textPrimary" gutterBottom>
+          Created: {props.log.created_at.split("T")[0]}
+        </Typography>
+        <Typography className={classes.date} color="textPrimary" gutterBottom>
+          Last Updated: {props.log.updated_at.split("T")[0]}
         </Typography>
         <Typography className={classes.title} color="textPrimary" gutterBottom>
-          {props.log.bugTitle}
+          Title: {props.log.bugTitle}
         </Typography>
-        <Typography variant="h5" component="h2">
-        {props.log.bugDescription}
+        <Typography className={classes.description} variant="h5" component="h4">
+         Description: {props.log.bugDescription}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-        {props.log.languagesInvolved}
+        <Typography className={classes.languages} >
+         Languages: {props.log.languagesInvolved}
         </Typography>
-        <Typography variant="body2" component="p">
-          {props.log.solution}
-          <br />
-          {'--------------'}
-          <br />
-          {'Notes for bug:'}
-          <br />
-          {props.log.notes}
+        <Typography className={classes.solution}>
+          Solution: {props.log.solution}
+        </Typography>
+        <Typography className={classes.notes} >
+         Notes: {props.log.notes}
         </Typography>
       </CardContent>
       {props.log.user_email === props.user ? 
