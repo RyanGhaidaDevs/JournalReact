@@ -13,7 +13,18 @@ const styles = {
     border: 5,
     borderRadius: 5,
     boxShadow: '0 3px 10px 2px rgb(192,192,192)'
-  }
+  },
+  Create: {
+    color: "grey",
+    border: "groove",
+    background: "white",
+    fontSize: 18,
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+
+  },
+
   };
 
 class AddProject extends Component {
@@ -90,13 +101,12 @@ class AddProject extends Component {
           />
 
           <Button 
+          className={classes.Create}
           label="submit"
           primary={"true"}
           margin='15'
           onClick={this.handleSubmit}
-          inputProps={{
-            style: {fontSize: 28} 
-          }}> 
+         >
             Create Project 
           </Button>
           </Grid>

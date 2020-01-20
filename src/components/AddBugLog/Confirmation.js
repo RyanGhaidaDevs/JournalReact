@@ -19,11 +19,6 @@ const styles = {
 
  class Confirmation extends Component {
 
-  //  continue = event => {
-  //    event.preventDefault();
-  //    //process form submital
-  //    this.props.nextStep();
-  //  }
 
    back = event => {
     event.preventDefault();

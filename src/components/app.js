@@ -71,7 +71,7 @@ export default class App extends Component {
   }
 
   setProjects(projects){
-    
+    console.log(projects)
     this.setState({
       projects: projects.data
     })

@@ -29,7 +29,7 @@ export default class ProjectsContainer extends Component  {
 
   handleDelete = (id) => {
     console.log(id)
-     axios.delete(`http://localhost:3001/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.props.setProjects(data.data.projects))
+     axios.delete(`http://localhost:3001/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.props.setProjects(data))
   }
 
   displayProjects(){
