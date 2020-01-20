@@ -8,34 +8,34 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275,
-    maxWidth: 600,
+    width: 400,
+    minHeight: 200,
     border: "groove",
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 30px',
+    margin: 50,
   },
   title: {
     fontSize: 24,
-    color: 'red'
+    color: 'blue'
   },
   user: {
     fontSize: 14,
-    color: 'blue'
+    color: 'green'
   },
   pos: {
     marginBottom: 12,
   },
   Delete: {
     color: "red",
-    border: "groove"
+    border: "groove",
+    background: "white",
+    width: 75
   },
   Edit: {
     color: "orange",
     border: "groove",
     background: "grey",
-    minWidth: 150
+    width: 75,
+    fontSize: "12",
   }
 });
 
@@ -43,7 +43,6 @@ export default function SimpleCard(props) {
 
 
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.card}>
@@ -72,16 +71,18 @@ export default function SimpleCard(props) {
       </CardContent>
       {props.log.user_email === props.user ? 
          <CardActions>
+           <div class="cardButtonParentDiv"> 
         {props.class === "edit" ? 
-          <div> 
+          <div class="carbButtons">  
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
           </div> 
           : 
-          <div> 
+          <div class="carbButtons"> 
             <Button className={classes.Edit} onClick={()=> props.handleEdit(props.log, props) }> Edit </Button>
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
           </div>}
+          </div> 
        </CardActions> 
       
        :

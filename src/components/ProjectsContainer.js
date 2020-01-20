@@ -49,7 +49,7 @@ export default class ProjectsContainer extends Component  {
   render(){
     return(
       <div >
-        {this.props.projects.length === 0 ? <AddProject/> : <div>  {this.displayProjects()}  </div> }
+        {this.props.projects.length === 0 ? <AddProject/> : <div> <Grid container> {this.displayProjects()} </Grid> </div> }
       </div>
     )
   }

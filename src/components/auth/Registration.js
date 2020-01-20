@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Button  from '@material-ui/core/Button';
+
 
 export default class Registration extends Component {
   constructor(props){
@@ -51,9 +53,18 @@ export default class Registration extends Component {
 
   render() {
     return (
-      <div>
+      <div id="regParent" style={{marginTop: 100}}>
+        <div id="regChild"> 
+        <h2 style={{marginBottom: 20,
+        marginTop: 30}}>  Welcome to BugLogger! </h2> 
+        <h3 style={{marginBottom: 40}}> To create an account please enter a valid email and password. </h3> 
         <form onSubmit={this.handleSubmit} > 
+         
         <input 
+        style={
+          {fontSize: 22,
+          width: 325} 
+        }
           type="email" 
           name="email" 
           placeholder="Email" 
@@ -61,7 +72,15 @@ export default class Registration extends Component {
           onChange={this.handleChange} 
           required 
         />
+        <br/>
+        
         <input 
+        style={
+          {fontSize: 22,
+          margin: 20,
+          width: 325
+         } 
+        }
           type="password" 
           name="password" 
           placeholder="Password" 
@@ -69,7 +88,13 @@ export default class Registration extends Component {
           onChange={this.handleChange} 
           required 
         />
+        <br/>
+      
          <input 
+         style={
+          {fontSize: 22,
+          width: 325} 
+        }
           type="password" 
           name="password_confirmation" 
           placeholder="Password confirmation" 
@@ -77,8 +102,24 @@ export default class Registration extends Component {
           onChange={this.handleChange} 
           required 
         />
-        <button type="submit"> Register </button>
+        <br/>
+        <Button 
+          label="submit"
+          type="submit"
+          primary={true}
+          margin='25'
+          variant="focus"
+          size="small"
+          style={
+            {fontSize: 24,
+              color: 'grey',
+              padding: 40,
+            } 
+          }
+          color="inherit"
+          > Register </Button>
         </form>
+        </div>
       </div>
     )
   }

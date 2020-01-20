@@ -57,7 +57,7 @@ const NavBar = (props) => {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
-  const [newUser, setNewUser] = React.useState(false);
+  // const [newUser, setNewUser] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -84,7 +84,7 @@ const NavBar = (props) => {
           BugLogger 
         </Typography>
 
-        {props.projectSelected ?  
+        {props.projectSelected && props.user ?  
           <Typography variant="h4" className={classes.title}>
             {props.projectSelected.name}  
           </Typography>
@@ -146,8 +146,7 @@ const NavBar = (props) => {
     <Modal aria-labelledby="login" aria-describedby="login-modal" open={open}>
       <div style={modalStyle} className={classes.paper}>
         <Button className={classes.loginCloseButton} onClick={handleClose}> X </Button>
-      
-        <Login handleLogin={props.handleLogin} />
+        <Login  onClick={handleClose} handleLogin={props.handleLogin} />
       </div>
     </Modal>
   </div>

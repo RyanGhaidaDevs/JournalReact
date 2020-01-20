@@ -56,6 +56,29 @@ html {
     display: inline-block;
 }
 
+#regParent{
+    text-align: center;
+    margin: 0 auto; 
+    
+    top: 35%;
+    width: 600px;
+    height: 400px;
+    background-color: white;
+}
+
+#regChild{
+    display: inline-block;
+}
+
+.cardButtons{
+    display: inline-block;
+}
+
+.cardButtonParentDiv{
+    margin: 0 auto; 
+    text-align: center;
+}
+
 .login-form-input{
    width: 300px;
 }
