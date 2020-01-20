@@ -51,7 +51,6 @@ export default class LogsContainer extends Component  {
   render(){
     return(
       <div >
-        <h1> Logs Page </h1>
         <Grid container>
         {this.displayLogs()}
         </Grid> 

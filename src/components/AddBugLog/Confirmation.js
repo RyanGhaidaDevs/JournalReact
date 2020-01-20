@@ -6,7 +6,16 @@ import  ListItem  from '@material-ui/core/ListItem'
 import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
 import ListItemText from '@material-ui/core/ListItemText';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+  root: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+  }
+  };
 
  class Confirmation extends Component {
 
@@ -24,43 +33,53 @@ import ListItemText from '@material-ui/core/ListItemText';
   render() {
 
     const { values: {bugTitle,bugDescription,languagesInvolved,links,solution,notes}} = this.props;
-    
+    const { classes } = this.props;
+
     return (
       <MuiThemeProvider >
         
         <Grid container spacing={10} direction="column" alignItems="center" justify="center" style={{ minHeight: '100vh', width: '200vh'}} >
         
           <List>
-            <ListItem > 
-            <ListItemText  primary={<span style={{fontSize: 28}}>Bug Title</span>} secondary={<span style={{fontSize: 18}}> {bugTitle}</span>} /> 
+            <ListItem className={classes.root}> 
+            <ListItemText 
+            className={classes.root} 
+            primary={<span style={{fontSize: 28}}>Bug Title</span>} 
+            secondary={<span style={{fontSize: 18}}> {bugTitle}</span>} 
+            /> 
          
             </ListItem>
-            <ListItem > 
-             <ListItemText 
+            <ListItem className={classes.root}> 
+             <ListItemText
+             className={classes.root} 
               primary={<span style={{fontSize: 28}}> Description</span>}
               secondary={<span style={{fontSize: 18}}> {bugDescription}</span>}
             />
             </ListItem>
-            <ListItem > 
+            <ListItem className={classes.root}> 
              <ListItemText 
+             className={classes.root}
               primary={<span style={{fontSize: 28}}>Languages Involved</span>}
               secondary={<span style={{fontSize: 18}}> {languagesInvolved}</span>}
             />
             </ListItem>
-            <ListItem > 
+            <ListItem className={classes.root}> 
              <ListItemText 
+             className={classes.root}
               primary={<span style={{fontSize: 28}}> Relevant Links</span>}
               secondary={<span style={{fontSize: 18}}> {links}</span>}
             />
             </ListItem>
-            <ListItem > 
+            <ListItem className={classes.root}> 
              <ListItemText 
+             className={classes.root}
               primary={<span style={{fontSize: 28}}> Bug Solution</span>}
               secondary={<span style={{fontSize: 18}}> {solution}</span>}
             />
             </ListItem>
-            <ListItem > 
+            <ListItem className={classes.root}> 
              <ListItemText 
+             className={classes.root}
               primary={<span style={{fontSize: 28}}> Notes</span>}
               secondary={<span style={{fontSize: 18}}> {notes}</span>}
             />
@@ -98,7 +117,7 @@ import ListItemText from '@material-ui/core/ListItemText';
   }
 }
 
-export default Confirmation;
+export default withStyles(styles)(Confirmation);
 
 
  

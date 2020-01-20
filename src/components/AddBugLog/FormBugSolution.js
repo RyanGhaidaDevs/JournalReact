@@ -3,7 +3,16 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+  root: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+  }
+  };
 
  class FormBugSolution extends Component {
   
@@ -22,7 +31,8 @@ import Button  from '@material-ui/core/Button';
   render() {
 
     const {values, handleChange} = this.props;
-    
+    const { classes } = this.props;
+
 
     return (
       <MuiThemeProvider >
@@ -39,6 +49,7 @@ import Button  from '@material-ui/core/Button';
           
         </Grid>   
         <TextField 
+          className={classes.root}
           placeholder="relevant links"
           label="Links"
           name="links"
@@ -49,6 +60,7 @@ import Button  from '@material-ui/core/Button';
           }}
           />
           <TextField 
+           className={classes.root}
           placeholder="solution"
           label="Bug Solution"
           name="solution"
@@ -61,7 +73,8 @@ import Button  from '@material-ui/core/Button';
             style: {fontSize: 18, padding: 40, width: 500,  lineHeight: 1}, 
           }}
           />
-            <TextField 
+          <TextField 
+          className={classes.root}
           placeholder="additional notes; dependecies, versions etc. "
           label="Notes"
           name="notes"
@@ -103,6 +116,6 @@ import Button  from '@material-ui/core/Button';
     )
   }
 }
-export default FormBugSolution;
+export default withStyles(styles)(FormBugSolution);
 
 

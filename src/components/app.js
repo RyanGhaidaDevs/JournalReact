@@ -106,7 +106,7 @@ export default class App extends Component {
             render={ props => (
               <div> 
                 <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-                <Registration {...props} /> 
+                <Registration {...props} handleLogin={this.handleLogin} /> 
               </div> 
             )}
           /> 

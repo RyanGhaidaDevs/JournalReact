@@ -43,7 +43,6 @@ export default class AllLogs extends Component  {
   render(){
     return(
       <div id="alllogs">
-        <h1> All Logs </h1>
         <Grid container>
         {this.displayLogs()}
         </Grid> 

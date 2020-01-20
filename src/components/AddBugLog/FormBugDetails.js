@@ -3,8 +3,16 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
-
+const styles = {
+  root: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+  }
+  };
 
  class FormBugDetails extends Component {
   
@@ -18,6 +26,7 @@ import Button  from '@material-ui/core/Button';
   render() {
 
     const {values, handleChange} = this.props;
+    const { classes } = this.props;
 
     return (
       <MuiThemeProvider >
@@ -34,6 +43,7 @@ import Button  from '@material-ui/core/Button';
           
         </Grid>   
         <TextField 
+          className={classes.root}
           placeholder="title and/or key words"
           label="Bug Title"
           name="bugTitle"
@@ -44,6 +54,7 @@ import Button  from '@material-ui/core/Button';
           }}
           />
           <TextField 
+           className={classes.root}
           placeholder="describe the context, nature and details of the bug"
           label="Bug Description"
           name="bugDescription"
@@ -58,6 +69,7 @@ import Button  from '@material-ui/core/Button';
           }}
           />
           <TextField 
+          className={classes.root}
           placeholder="i.e. JS, Ruby..."
           label="Languages involved"
           name="languagesInvolved"
@@ -88,6 +100,6 @@ import Button  from '@material-ui/core/Button';
     )
   }
 }
-export default FormBugDetails
+export default withStyles(styles)(FormBugDetails)
 
 

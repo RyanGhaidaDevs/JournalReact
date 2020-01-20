@@ -4,11 +4,21 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
+
+const styles = {
+  root: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+  }
+  };
 
 class AddProject extends Component {
-
   constructor(props){
+
     super(props);
 
     this.state = {
@@ -53,8 +63,8 @@ class AddProject extends Component {
 
 
   render() {
+    const { classes } = this.props;
     return (
-      <MuiThemeProvider >
         <Grid
           container
           spacing={0}
@@ -63,9 +73,13 @@ class AddProject extends Component {
           justify="center"
           style={{ minHeight: '100vh' }}
         >
-        <Grid item xs={3}>
+        <Grid item xs={3} 
+          >
         </Grid>   
+
         <TextField 
+          className={classes.root}
+          margin="normal"
           placeholder="Project Name"
           label="Project Name"
           name="name"
@@ -86,9 +100,9 @@ class AddProject extends Component {
             Create Project 
           </Button>
           </Grid>
-          </MuiThemeProvider>
+
     )
   }
 }
 
-export default AddProject
+export default withStyles(styles)(AddProject)
