@@ -53,10 +53,12 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div id="login">
-        <br/>
+      <div id="loginParent">
+        <div id="loginChild">
+        <h2 style={{marginBottom: 20}}> Welcome Back! </h2> 
+        <h3 style={{marginBottom: 10}}> Please enter your email and password below.</h3> 
         <form onSubmit={this.handleSubmit} > 
-       <h1> Email: </h1>  
+        <h3> Email </h3>  
         <input 
         style={
           {fontSize: 22} 
@@ -69,8 +71,9 @@ export default class Login extends Component {
           onChange={this.handleChange} 
           required 
         />
+        <br/>
        
-       <h1> Password: </h1>
+       <h3> Password </h3>
         <input 
         style={
           {fontSize: 22} 
@@ -89,13 +92,18 @@ export default class Login extends Component {
           type="submit"
           primary={true}
           margin='15'
+          variant="focus"
+          size="small"
           style={
-            {fontSize: 28,
+            {fontSize: 24,
+              color: 'grey',
+              padding: 10,
             } 
           }
           color="inherit"
           > Login </Button>
         </form>
+        </div>
       </div>
     )
   }

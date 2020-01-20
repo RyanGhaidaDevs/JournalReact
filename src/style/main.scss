@@ -37,6 +37,7 @@ html {
 //     text-rendering: optimizeLegibility;
 //     -webkit-tap-highlight-color: transparent;
  }
+
 #login{
    position: fixed;
    top: 55%;
@@ -47,6 +48,14 @@ html {
    margin-left: -50px;
 }
 
+#loginParent{
+    text-align: center;
+}
+
+#loginChild{
+    display: inline-block;
+}
+
 .login-form-input{
    width: 300px;
 }
@@ -54,7 +63,6 @@ html {
 .modal-login{
     display: block; 
     width: 1400px; 
-    padding-left: 0px;
 }
 
 

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LogCard from './AddBugLog/LogCard';
-import Background from './Images/background.jpg';
-import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
 
 
@@ -12,14 +10,14 @@ export default class LogsContainer extends Component  {
     super(props);
 
     this.state = {
-      logs: false,
+      logs: [],
       editLog: false
     }
 
   }
 
   componentDidMount() {
-     axios.get("http://localhost:3001/logs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
+    axios.get("http://localhost:3001/logs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}, ()=>console.log(data)))
   }
 
      

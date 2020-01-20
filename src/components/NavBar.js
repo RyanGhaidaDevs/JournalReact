@@ -5,7 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Modal from '@material-ui/core/Modal';
 import Login from './auth/Login';
 import BugReportIcon from '@material-ui/icons/BugReport';
@@ -13,12 +12,12 @@ import Registration from './auth/Registration';
 
 function getModalStyle() {
   const top = 40 
-  const left = 40 
+  const left = 42
 
   return {
     top: `${top}%`,
     left: `${left}%`,
-    height: `25%`
+    height: `30%`
   };
 }
 
@@ -35,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
     width: 400,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'white',
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(4, 4, 4),
@@ -46,6 +45,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: '14px',
     padding: '10px',
   },
+  loginCloseButton: {
+    marginLeft: -10,
+    marginTop: -20,
+    fontSize: '24px',
+    color: 'grey'
+  }
 }));
 
 const NavBar = (props) => {
@@ -140,9 +145,9 @@ const NavBar = (props) => {
 
     <Modal aria-labelledby="login" aria-describedby="login-modal" open={open}>
       <div style={modalStyle} className={classes.paper}>
-      <h2> Welcome back! Please login with your email and password below: </h2>
+        <Button className={classes.loginCloseButton} onClick={handleClose}> X </Button>
+      
         <Login handleLogin={props.handleLogin} />
-        <Button onClick={handleClose}> X </Button>
       </div>
     </Modal>
   </div>
