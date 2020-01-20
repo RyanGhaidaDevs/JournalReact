@@ -4,9 +4,31 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button  from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  root: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+  },
+  Continue: {
+    width: 125,
+    color: "grey",
+    border: "groove",
+    background: "white",
+    fontSize: 18,
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)',
+    margin: 15
+
+  },
+  };
 
 
-export default class BugShowPage extends Component {
+class BugShowPage extends Component {
   constructor(props){
     super(props);
 
@@ -80,7 +102,8 @@ export default class BugShowPage extends Component {
   }
 
   render() {
-     
+    const { classes } = this.props;
+
     return (
       <MuiThemeProvider >
         <Grid
@@ -93,7 +116,8 @@ export default class BugShowPage extends Component {
         >
         <Grid item xs={3}>
         </Grid> 
-        <TextField 
+        <TextField
+          className={classes.root} 
           placeholder="title and/or key words"
           label="Bug Title"
           name="bugTitle"
@@ -105,6 +129,7 @@ export default class BugShowPage extends Component {
           />
 
           <TextField 
+          className={classes.root}
           placeholder="describe the context, nature and details of the bug"
           label="Bug Description"
           name="bugDescription"
@@ -120,6 +145,7 @@ export default class BugShowPage extends Component {
           />
 
           <TextField 
+          className={classes.root}
           placeholder="i.e. JS, Ruby..."
           label="Languages involved"
           name="languagesInvolved"
@@ -133,6 +159,7 @@ export default class BugShowPage extends Component {
           />
 
           <TextField 
+          className={classes.root}
           placeholder="relevant links"
           label="Links"
           name="links"
@@ -144,6 +171,7 @@ export default class BugShowPage extends Component {
           />
 
           <TextField 
+          className={classes.root}
           placeholder="solution"
           label="Bug Solution"
           name="solution"
@@ -157,7 +185,8 @@ export default class BugShowPage extends Component {
           }}
           />
 
-             <TextField 
+          <TextField 
+          className={classes.root}
           placeholder="additional notes; dependecies, versions etc. "
           label="Notes"
           name="notes"
@@ -172,14 +201,13 @@ export default class BugShowPage extends Component {
           />
 
           <Button 
+          className={classes.Continue}
           label="submit"
           primary={"true"}
           margin='15'
           onClick={this.handleSubmit}
-          inputProps={{
-            style: {fontSize: 28} 
-          }}> 
-            Submit Changes 
+          >
+            Submit 
           </Button>
       </Grid> 
       </MuiThemeProvider>
@@ -187,3 +215,4 @@ export default class BugShowPage extends Component {
   }
 }
 
+export default withStyles(styles)(BugShowPage)

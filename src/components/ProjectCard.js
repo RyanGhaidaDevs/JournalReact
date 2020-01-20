@@ -10,8 +10,10 @@ const useStyles = makeStyles({
     card: {
       width: 400,
       height: 200,
-      border: "groove",
       margin: 50,
+      border: 5,
+      borderRadius: 5,
+      boxShadow: '0 3px 10px 2px rgb(192,192,192)'
     },
   title: {
     fontSize: 24,

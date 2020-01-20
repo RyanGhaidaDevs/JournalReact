@@ -11,7 +11,19 @@ const styles = {
     border: 5,
     borderRadius: 5,
     boxShadow: '0 3px 10px 2px rgb(192,192,192)'
-  }
+  },
+  Continue: {
+    width: 125,
+    color: "grey",
+    border: "groove",
+    background: "white",
+    fontSize: 18,
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)',
+    margin: 15
+
+  },
   };
 
  class FormBugDetails extends Component {
@@ -87,9 +99,7 @@ const styles = {
           primary={true}
           margin='15'
           onClick={this.continue}
-          inputProps={{
-            style: {fontSize: 28} 
-          }}
+          className={classes.Continue}
           > Continue </Button>
           
          

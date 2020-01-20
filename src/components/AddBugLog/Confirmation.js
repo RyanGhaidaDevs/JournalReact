@@ -13,8 +13,30 @@ const styles = {
     background: 'white',
     border: 5,
     borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)',
+    width: 750
+  },
+  Continue: {
+    width: 125,
+    color: "grey",
+    border: "groove",
+    background: "white",
+    fontSize: 18,
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)',
+    margin: 15
+  },
+  Back: {
+    width: 125,
+    color: "grey",
+    border: "groove",
+    background: "white",
+    fontSize: 18,
+    border: 5,
+    borderRadius: 5,
     boxShadow: '0 3px 10px 2px rgb(192,192,192)'
-  }
+  },
   };
 
  class Confirmation extends Component {
@@ -33,7 +55,13 @@ const styles = {
     return (
       <MuiThemeProvider >
         
-        <Grid container spacing={10} direction="column" alignItems="center" justify="center" style={{ minHeight: '100vh', width: '200vh'}} >
+        <Grid
+         container 
+         spacing={0} 
+         direction="column" 
+         alignItems="center" 
+         justify="center" 
+         style={{ minHeight: '100vh'}} >
         
           <List>
             <ListItem className={classes.root}> 
@@ -86,11 +114,9 @@ const styles = {
           primary={true}
           margin='15'
           onClick={() => this.props.handleSubmit(event)}
-          inputProps={{
-            style: {fontSize: 28} 
-          }}
+          className={classes.Continue}
           > 
-          Confirm & Continue 
+          Confirm 
           </Button>
 
           <Button 
@@ -98,10 +124,9 @@ const styles = {
           primary={"false"}
           margin='15'
           onClick={this.back}
-          inputProps={{
-            style: {fontSize: 28} 
-          }}
-          > Back </Button>
+          className={classes.Back}
+          > Back 
+          </Button>
           
          
         </Grid> 
