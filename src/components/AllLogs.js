@@ -84,7 +84,7 @@ class AllLogs extends Component  {
     const { classes } = this.props;
 
     return(
-      <div id="alllogs" class='searchParent'>
+      <div class='searchParent'>
       <div class='searchChild'> 
       <TextField
         className={classes.Search}
