@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
   solution: {
     fontSize: 16,
-    color: 'blue'
+    color: '#637299'
   },
   notes: {
     fontSize: 12,
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
   user: {
     fontSize: 14,
-    color: 'orange'
+    color: '#637299'
   },
   date: {
     fontSize: 12,
@@ -69,7 +69,7 @@ export default function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
       <Typography className={classes.user} color="textPrimary" gutterBottom>
-          User: {props.log.user_email}
+          User: {props.log.user_email.split("@")[0]}
         </Typography>
         <Typography className={classes.date} color="textPrimary" gutterBottom>
           Created: {props.log.created_at.split("T")[0]}

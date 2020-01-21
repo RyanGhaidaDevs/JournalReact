@@ -53,6 +53,12 @@ const useStyles = makeStyles(theme => ({
   },
   navbar:{
     backgroundColor: '#637299'
+  },
+  bugButton: {
+    color: 'orange'
+  },
+  userEmail: {
+    color: 'orange'
   }
 }));
 
@@ -81,7 +87,7 @@ const NavBar = (props) => {
     <AppBar className={classes.navbar} position="static">
       <Toolbar >
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <BugReportIcon   fontSize="large" onClick={()=> props.history.push("/alllogs")}/>
+          <BugReportIcon className={classes.bugButton}  fontSize="large" onClick={()=> props.history.push("/alllogs")}/>
         </IconButton>
         <Typography variant="h4" className={classes.title}>
           BugLogger 
@@ -129,7 +135,7 @@ const NavBar = (props) => {
           <Button style={ {fontSize: '14px'} } color="inherit" onClick={logOut}>
           Logout
           </Button> 
-          <Button style={ {fontSize: '14px'} } color="inherit" onClick={()=> props.history.push("/homepage")}>
+          <Button  className={classes.userEmail} style={ {fontSize: '14px'} } color="inherit" onClick={()=> props.history.push("/homepage")}>
             { props.user.email }
           </Button> 
         </div>  
