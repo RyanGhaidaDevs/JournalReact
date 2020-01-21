@@ -12,7 +12,7 @@ const styles = {
     background: 'white',
     border: 5,
     borderRadius: 5,
-    boxShadow: '0 3px 10px 2px rgb(192,192,192)',
+    boxShadow: '0 3px 20px 2px rgb(192,192,192)',
     width: 800,
     margin: 20,
     
@@ -27,7 +27,7 @@ class AllLogs extends Component  {
     this.state = {
       logs: false,
       search: "",
-      filterdLogs: []
+      filteredLogs: []
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -50,16 +50,35 @@ class AllLogs extends Component  {
       })
     }
   }
+
+  displayFilteredLogs(){
+    let filteredLogs = this.state.filteredLogs;
+    let props = this.props;
+    if(filteredLogs){
+      return filteredLogs.map(log => {
+        return <Grid item sm> 
+          <LogCard {...props} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
+        </Grid> 
+      })
+    }
+
+  }
     
 
   handleChange(event){
     this.setState({
       [event.target.name]: event.target.value
-    }, ()=> console.log(this.state)) 
-
-   
-  
-  }
+    }, () => {
+      const logs = this.state.logs
+      let filteredLogs = logs.filter(log => Object.values(log).join(" ").toString().toLowerCase().split(" ").includes(this.state.search.toLowerCase())) 
+      // console.log(this.state.search)
+       console.log(filteredLogs)
+       this.setState({
+         filteredLogs: filteredLogs
+       })
+      // console.log(this.state.logs)
+    })  
+   }
 
   render(){
     const { classes } = this.props;
@@ -76,7 +95,7 @@ class AllLogs extends Component  {
       />
     </div> 
         <Grid container>
-        {this.displayLogs()}
+        {this.state.search !== "" ? this.displayFilteredLogs() : this.displayLogs()}
         </Grid> 
       </div>
     )
