@@ -107,7 +107,7 @@ const NavBar = (props) => {
           }
 
           <Button  onClick={()=> props.history.push("/homepage")} className={classes.NavBarButtons} color="inherit" aria-label="About">
-            View Projects
+            View/Select Project
           </Button>
           <Button id="bugLogs" onClick={()=> props.history.push("/logs")} className={classes.NavBarButtons} color="inherit" aria-label="View">
             View Your Bug Logs

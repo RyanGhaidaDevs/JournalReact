@@ -63,6 +63,7 @@ export default class App extends Component {
   handleLogout(){
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN",
+      projectSelected: false,
       user: {}
     })
     axios.delete("http://localhost:3001/logout", {withCredentials: true}).catch(error => {
