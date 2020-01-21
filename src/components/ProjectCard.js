@@ -42,7 +42,6 @@ const useStyles = makeStyles({
 
 export default function ProjectCard(props) {
   const classes = useStyles();
-  console.log(props)
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -55,10 +54,10 @@ export default function ProjectCard(props) {
       </CardContent>
       <CardActions>
           <div class="cardButtonParentDiv"> 
-          <div class="carbButtons">  
-            <Button  className={classes.Select}onClick={()=> props.handleSelect(props.project.id) }> {props.selectedProject === props.project ? "Unselect" : "Select"} </Button>
-            <Button className={classes.Delete} onClick={()=> props.handleDelete(props.project.id) }> Delete </Button>
-          </div>
+            <div class="carbButtons">  
+              <Button  className={classes.Select}onClick={()=> props.handleSelect(props.project.id) }> {props.selectedProject === props.project ? "Unselect" : "Select"} </Button>
+              <Button className={classes.Delete} onClick={()=> props.handleDelete(props.project.id) }> Delete </Button>
+            </div>
           </div>
        </CardActions>
     </Card>

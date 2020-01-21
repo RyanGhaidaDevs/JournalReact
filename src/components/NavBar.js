@@ -73,7 +73,6 @@ const NavBar = (props) => {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
-  // const [newUser, setNewUser] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(true);

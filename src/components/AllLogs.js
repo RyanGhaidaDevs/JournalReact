@@ -41,7 +41,6 @@ class AllLogs extends Component  {
   displayLogs(){
     const logs = this.state.logs;
     const props = this.props;
-    console.log(props)
     if(logs){
       return logs.map(log => {
         return <Grid item sm> 
@@ -61,7 +60,6 @@ class AllLogs extends Component  {
         </Grid> 
       })
     }
-
   }
     
 
@@ -71,12 +69,10 @@ class AllLogs extends Component  {
     }, () => {
       const logs = this.state.logs
       let filteredLogs = logs.filter(log => Object.values(log).join(" ").toString().toLowerCase().split(" ").includes(this.state.search.toLowerCase())) 
-      // console.log(this.state.search)
        console.log(filteredLogs)
        this.setState({
          filteredLogs: filteredLogs
        })
-      // console.log(this.state.logs)
     })  
    }
 
@@ -85,17 +81,17 @@ class AllLogs extends Component  {
 
     return(
       <div class='searchParent'>
-      <div class='searchChild'> 
-      <TextField
-        className={classes.Search}
-        placeholder="Search"
-        name="search"
-        inputProps={{ style: {textAlign: 'center'} }}
-        onChange={this.handleChange}     
-      />
-    </div> 
+        <div class='searchChild'> 
+          <TextField
+            className={classes.Search}
+            placeholder="Search"
+            name="search"
+            inputProps={{ style: {textAlign: 'center'} }}
+            onChange={this.handleChange}     
+          />
+        </div> 
         <Grid container>
-        {this.state.search !== "" ? this.displayFilteredLogs() : this.displayLogs()}
+          {this.state.search !== "" ? this.displayFilteredLogs() : this.displayLogs()}
         </Grid> 
       </div>
     )

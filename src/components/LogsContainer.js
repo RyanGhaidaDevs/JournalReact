@@ -14,10 +14,8 @@ const styles = {
     boxShadow: '0 3px 20px 2px rgb(192,192,192)',
     width: 800,
     margin: 20,
-    
   },
-
-  };
+};
 
 class LogsContainer extends Component  {
   constructor(props) {
@@ -30,10 +28,7 @@ class LogsContainer extends Component  {
       search: ""
 
     }
-
     this.handleChange = this.handleChange.bind(this);
-
-
   }
 
   componentDidMount() {
@@ -51,7 +46,7 @@ class LogsContainer extends Component  {
         return <Grid item sm> <LogCard {...props} user={log.user_email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })
     }
-    }
+  }
 
     displayFilteredLogs(){
       let filteredLogs = this.state.filteredLogs;
@@ -63,7 +58,6 @@ class LogsContainer extends Component  {
           </Grid> 
         })
       }
-  
     }
 
     handleChange(event){
@@ -72,14 +66,11 @@ class LogsContainer extends Component  {
       }, () => {
         const logs = this.state.logs
         let filteredLogs = logs.filter(log => Object.values(log).join(" ").toString().toLowerCase().split(" ").includes(this.state.search.toLowerCase())) 
-        // console.log(this.state.search)
-         console.log(filteredLogs)
          this.setState({
            filteredLogs: filteredLogs
          })
-        // console.log(this.state.logs)
       })  
-     }
+    }
 
 
   handleDelete = (id) => {
@@ -88,21 +79,22 @@ class LogsContainer extends Component  {
 
 
   render(){
+  
     const { classes } = this.props;
 
     return(
       <div class='searchParent'>
-      <div class='searchChild'> 
-      <TextField
-        className={classes.Search}
-        placeholder="Search"
-        name="search"
-        inputProps={{ style: {textAlign: 'center'} }}
-        onChange={this.handleChange}     
-      />
-    </div> 
+        <div class='searchChild'> 
+        <TextField
+          className={classes.Search}
+          placeholder="Search"
+          name="search"
+          inputProps={{ style: {textAlign: 'center'} }}
+          onChange={this.handleChange}     
+        />
+        </div> 
         <Grid container>
-        {this.state.search !== "" ? this.displayFilteredLogs() : this.displayLogs()}
+          {this.state.search !== "" ? this.displayFilteredLogs() : this.displayLogs()}
         </Grid> 
       </div>
     )

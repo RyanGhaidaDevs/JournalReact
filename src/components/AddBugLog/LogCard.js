@@ -68,7 +68,7 @@ export default function SimpleCard(props) {
   return (
     <Card className={classes.card}>
       <CardContent>
-      <Typography className={classes.user} color="textPrimary" gutterBottom>
+        <Typography className={classes.user} color="textPrimary" gutterBottom>
           User: {props.log.user_email.split("@")[0]}
         </Typography>
         <Typography className={classes.date} color="textPrimary" gutterBottom>
@@ -96,22 +96,22 @@ export default function SimpleCard(props) {
       {props.log.user_email === props.user ? 
          <CardActions>
            <div class="cardButtonParentDiv"> 
-        {props.class === "edit" ? 
-          <div class="carbButtons">  
-            <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
-            <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
-          </div> 
-          : 
-          <div class="carbButtons"> 
-            <Button className={classes.Edit} onClick={()=> props.handleEdit(props.log, props) }> Edit </Button>
-            <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
-          </div>}
-          </div> 
-       </CardActions> 
-      
-       :
-        "" }
-      
+            {props.class === "edit" ? 
+              <div class="carbButtons">  
+                <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
+                <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
+              </div> 
+              : 
+              <div class="carbButtons"> 
+                <Button className={classes.Edit} onClick={()=> props.handleEdit(props.log, props) }> Edit </Button>
+                <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
+              </div>
+            }
+            </div> 
+          </CardActions> 
+        :
+        "" 
+      }
     </Card>
   );
 }

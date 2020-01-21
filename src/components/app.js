@@ -18,9 +18,7 @@ export default class App extends Component {
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {},
-      route: false,
       editLog: {},
-      clear: true,
       projects: [], 
       projectSelected: false 
     }
@@ -49,7 +47,7 @@ export default class App extends Component {
         })
       }
     }).catch(error => {
-      console.log("login error: !response.data.logged_in && this.state.loggedInStatus === LOGGED_IN", error)
+      console.log("login error:", error)
     })
   }
 
@@ -79,7 +77,7 @@ export default class App extends Component {
   }
 
   setSelectedProject(projectId){
-    if(projectId == this.state.projectSelected.id){
+    if(projectId === this.state.projectSelected.id){
       this.setState({
         projectSelected: false  
       })
@@ -106,7 +104,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className='app'>
+      <div>
       <BrowserRouter>
         <Switch>
         <Redirect from="/" exact to="/homepage" />

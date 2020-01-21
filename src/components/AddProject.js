@@ -22,14 +22,11 @@ const styles = {
     border: 5,
     borderRadius: 5,
     boxShadow: '0 3px 10px 2px rgb(192,192,192)'
-
   },
-
-  };
+};
 
 class AddProject extends Component {
   constructor(props){
-
     super(props);
 
     this.state = {
@@ -49,12 +46,10 @@ class AddProject extends Component {
   }
 
 
-  handleSubmit= (event)=> {
+  handleSubmit = (event)=> {
     event.preventDefault();
 
-    const {
-      name
-    } = this.state 
+    const {name} = this.state 
 
     axios.post("http://localhost:3001/projects",{
       user: {
@@ -63,10 +58,9 @@ class AddProject extends Component {
     }, 
     { withCredentials: true }
     ).then( response => {
-      console.log("posting project response", response)
       this.props.handleSelect(response.data.project.id)
-    }).catch( err => {
-      console.log("posting project error", err)
+    }).catch( error => {
+      console.log("posting project error", error)
     });
   };
 
@@ -83,9 +77,8 @@ class AddProject extends Component {
           justify="center"
           style={{ minHeight: '100vh' }}
         >
-        <Grid item xs={3} 
-          >
-        </Grid>   
+          <Grid item xs={3}>
+          </Grid>   
 
         <TextField 
           className={classes.root}
@@ -105,11 +98,10 @@ class AddProject extends Component {
           primary={"true"}
           margin='15'
           onClick={this.handleSubmit}
-         >
+          >
             Create Project 
           </Button>
-          </Grid>
-
+        </Grid>
     )
   }
 }

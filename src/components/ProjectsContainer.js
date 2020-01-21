@@ -15,15 +15,10 @@ export default class ProjectsContainer extends Component  {
   }
 
   componentDidMount() {
-    // axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => console.log(data))
      axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data))
   }
 
-  showData = (data) => {
-    console.log(data)
-  }
-
-  handleSelect= (projectId) => {
+  handleSelect = (projectId) => {
     console.log(projectId)
     this.props.setSelectedProject(projectId);
   }
@@ -42,15 +37,11 @@ export default class ProjectsContainer extends Component  {
       })
     }
   }
-     
 
-  handleEditSubmit=(update)=>{
-    console.log(update)
-  }
 
   render(){
     return(
-      <div >
+      <div>
         {this.props.projects.length === 0 ? <AddProject handleSelect={this.handleSelect}/> : <div> <Grid container> {this.displayProjects()} </Grid> </div> }
       </div>
     )

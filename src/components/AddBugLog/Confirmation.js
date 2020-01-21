@@ -37,7 +37,7 @@ const styles = {
     borderRadius: 5,
     boxShadow: '0 3px 10px 2px rgb(192,192,192)'
   },
-  };
+};
 
  class Confirmation extends Component {
 

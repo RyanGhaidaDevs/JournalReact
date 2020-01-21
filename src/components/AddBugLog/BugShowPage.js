@@ -23,9 +23,8 @@ const styles = {
     borderRadius: 5,
     boxShadow: '0 3px 10px 2px rgb(192,192,192)',
     margin: 15
-
   },
-  };
+};
 
 
 class BugShowPage extends Component {
@@ -65,18 +64,9 @@ class BugShowPage extends Component {
     })
   }
 
-  handleSubmit= (event)=> {
+  handleSubmit = (event) => {
     event.preventDefault();
-
-    const {
-      bugTitle, 
-      bugDescription,
-      languagesInvolved,
-      links,
-      solution,
-      notes, 
-      id
-    } = this.state 
+    const {bugTitle, bugDescription,languagesInvolved,links,solution,notes,id } = this.state 
 
     axios.patch("http://localhost:3001/logs",{
       user: {
@@ -88,20 +78,14 @@ class BugShowPage extends Component {
         notes: notes, 
         id: id 
       }
-    }, 
-    { withCredentials: true }
-    ).then( response => {
-      console.log("posting log response", response)
-      this.props.history.push("logs");
-     // add error handling here
-    }).catch( err => {
-      console.log("posting log error", err)
+    }, { withCredentials: true }).then( response => { this.props.history.push("logs")})
+    .catch( error => {
+      console.log("posting log error", error)
     });
-
-    
   }
 
   render() {
+
     const { classes } = this.props;
 
     return (
