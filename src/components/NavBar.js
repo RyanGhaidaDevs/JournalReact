@@ -50,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: -20,
     fontSize: '24px',
     color: 'grey'
+  },
+  navbar:{
+    backgroundColor: '#637299'
   }
 }));
 
@@ -75,8 +78,8 @@ const NavBar = (props) => {
 
   return(
     <div className={classes.root}>
-    <AppBar position="static">
-      <Toolbar>
+    <AppBar className={classes.navbar} position="static">
+      <Toolbar >
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           <BugReportIcon   fontSize="large" onClick={()=> props.history.push("/alllogs")}/>
         </IconButton>
