@@ -64,8 +64,7 @@ class AddProject extends Component {
     { withCredentials: true }
     ).then( response => {
       console.log("posting project response", response)
-      this.props.history.push("/homepage");
-     // add error handling here
+      this.props.handleSelect(response.data.project.id)
     }).catch( err => {
       console.log("posting project error", err)
     });

@@ -24,6 +24,7 @@ export default class ProjectsContainer extends Component  {
   }
 
   handleSelect= (projectId) => {
+    console.log(projectId)
     this.props.setSelectedProject(projectId);
   }
 
@@ -34,9 +35,10 @@ export default class ProjectsContainer extends Component  {
 
   displayProjects(){
     const projects = this.props.projects;
+    const selectedProject = this.props.selectedProject
     if(projects.length > 0){
       return projects.map(project => {
-        return <Grid item xl> <ProjectCard handleDelete={this.handleDelete} handleSelect={this.handleSelect}  id={project.id} project={project}> </ProjectCard></Grid> 
+        return <Grid item xl> <ProjectCard selectedProject={selectedProject} handleDelete={this.handleDelete} handleSelect={this.handleSelect}  id={project.id} project={project}> </ProjectCard></Grid> 
       })
     }
   }
@@ -49,7 +51,7 @@ export default class ProjectsContainer extends Component  {
   render(){
     return(
       <div >
-        {this.props.projects.length === 0 ? <AddProject/> : <div> <Grid container> {this.displayProjects()} </Grid> </div> }
+        {this.props.projects.length === 0 ? <AddProject handleSelect={this.handleSelect}/> : <div> <Grid container> {this.displayProjects()} </Grid> </div> }
       </div>
     )
   }

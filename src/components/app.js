@@ -84,10 +84,18 @@ export default class App extends Component {
         projectSelected: false  
       })
     }
-    else{
-      const p = this.state.projects.find((project) => project.id == projectId)
+    else if (!this.state.projects.find((project) => project.id == projectId)) {
+      axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.setProjects(data)).then(() =>{
+      const project = this.state.projects.find((project) => project.id == projectId)
       this.setState({
-        projectSelected: p
+        projectSelected: project
+      })
+      } )
+    }
+    else{
+      const project = this.state.projects.find((project) => project.id == projectId)
+      this.setState({
+        projectSelected: project
       })
     }
   }

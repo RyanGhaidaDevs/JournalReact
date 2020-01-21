@@ -17,11 +17,11 @@ const useStyles = makeStyles({
     },
   title: {
     fontSize: 24,
-    color: 'grey'
+    color: '#637299'
   },
   logs: {
     fontSize: 18,
-    color: 'green'
+    color: 'orange'
   },
   pos: {
     marginBottom: 12,
@@ -33,15 +33,16 @@ const useStyles = makeStyles({
     width: 75
   },
   Select: {
-    color: "blue",
+    color: "#637299",
     border: "groove",
     background: "white",
-    width: 75
+    width: 100
   }
 });
 
 export default function ProjectCard(props) {
   const classes = useStyles();
+  console.log(props)
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -55,7 +56,7 @@ export default function ProjectCard(props) {
       <CardActions>
           <div class="cardButtonParentDiv"> 
           <div class="carbButtons">  
-            <Button  className={classes.Select}onClick={()=> props.handleSelect(props.project.id) }> Select </Button>
+            <Button  className={classes.Select}onClick={()=> props.handleSelect(props.project.id) }> {props.selectedProject === props.project ? "Unselect" : "Select"} </Button>
             <Button className={classes.Delete} onClick={()=> props.handleDelete(props.project.id) }> Delete </Button>
           </div>
           </div>

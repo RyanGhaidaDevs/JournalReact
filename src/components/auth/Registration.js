@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Button  from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
 
-export default class Registration extends Component {
+const styles = {
+  root: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 20px 2px rgb(192,192,192)',
+    
+  },
+
+  };
+
+ class Registration extends Component {
   constructor(props){
     super(props);
 
@@ -45,6 +57,7 @@ export default class Registration extends Component {
     ).then( response => {
       if (response.data.status === 'created'){
       this.props.handleLogin(response.data)
+      this.props.history.push("/homepage")
       } // add error handling here
     }).catch( err => {
       console.log("error", err)
@@ -52,12 +65,13 @@ export default class Registration extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div id="regParent" style={{marginTop: 100}}>
+      <div id="regParent" style={{marginTop: 250}} class={classes.root}>
         <div id="regChild"> 
         <h2 style={{marginBottom: 20,
-        marginTop: 30}}>  Welcome to BugLogger! </h2> 
-        <h3 style={{marginBottom: 40}}> To create an account please enter a valid email and password. </h3> 
+        marginTop: 30, color: "#637299"}}>  Welcome to BugLogger! </h2> 
+        <h3 style={{marginBottom: 40, color: "orange" } }> To create an account please enter a valid email and password. </h3> 
         <form onSubmit={this.handleSubmit} > 
          
         <input 
@@ -112,8 +126,8 @@ export default class Registration extends Component {
           size="small"
           style={
             {fontSize: 24,
-              color: 'grey',
-              padding: 40,
+              color: '#637299',
+              padding: 30,
             } 
           }
           color="inherit"
@@ -124,3 +138,5 @@ export default class Registration extends Component {
     )
   }
 }
+
+export default withStyles(styles)(Registration)

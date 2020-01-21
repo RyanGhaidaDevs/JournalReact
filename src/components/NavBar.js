@@ -45,6 +45,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: '14px',
     padding: '10px',
   },
+  AddBugLog:{
+    marginRight: 12,
+    marginLeft: 12,
+    fontSize: '14px',
+    padding: '10px',
+    color: "orange"
+  },
   loginCloseButton: {
     marginLeft: -10,
     marginTop: -20,
@@ -95,7 +102,7 @@ const NavBar = (props) => {
 
         {props.projectSelected && props.user ?  
           <Typography variant="h4" className={classes.title}>
-            {props.projectSelected.name}  
+            { props.projectSelected.name }  
           </Typography>
           : 
            ""
@@ -105,7 +112,7 @@ const NavBar = (props) => {
         {props.user.email ? 
         <div>
           {props.projectSelected != false ? 
-            <Button onClick={()=> props.history.push("/addLog")} className={classes.NavBarButtons} color="inherit" aria-label="Add">
+            <Button onClick={()=> props.history.push("/addLog")} className={classes.AddBugLog} color="inherit" aria-label="Add">
               Add a Bug Log
             </Button>
           : 
