@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 24,
-    color: 'black'
+    color: '#637299'
   },
   description: {
     fontSize: 16,
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
   user: {
     fontSize: 14,
-    color: '#637299'
+    color: 'orange'
   },
   date: {
     fontSize: 12,
@@ -68,17 +68,9 @@ export default function SimpleCard(props) {
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography className={classes.user} color="textPrimary" gutterBottom>
-          User: {props.log.user_email.split("@")[0]}
-        </Typography>
-        <Typography className={classes.date} color="textPrimary" gutterBottom>
-          Created: {props.log.created_at.split("T")[0]}
-        </Typography>
-        <Typography className={classes.date} color="textPrimary" gutterBottom>
-          Last Updated: {props.log.updated_at.split("T")[0]}
-        </Typography>
+        
         <Typography className={classes.title} color="textPrimary" gutterBottom>
-          Title: {props.log.bugTitle}
+          {props.log.bugTitle}
         </Typography>
         <Typography className={classes.description} variant="h5" component="h4">
          Description: {props.log.bugDescription}
@@ -91,6 +83,15 @@ export default function SimpleCard(props) {
         </Typography>
         <Typography className={classes.notes} >
          Notes: {props.log.notes}
+        </Typography>
+        <Typography className={classes.user} color="textPrimary" gutterBottom>
+         {props.log.user_email.split("@")[0]}
+        </Typography>
+        <Typography className={classes.date} color="textPrimary" gutterBottom>
+          Created: {props.log.created_at.split("T")[0]}
+        </Typography>
+        <Typography className={classes.date} color="textPrimary" gutterBottom>
+          Last Updated: {props.log.updated_at.split("T")[0]}
         </Typography>
       </CardContent>
       {props.log.user_email === props.user ? 
