@@ -56,7 +56,7 @@ class AllLogs extends Component  {
     if(filteredLogs){
       return filteredLogs.map(log => {
         return <Grid item sm> 
-          <LogCard {...props} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
+          <LogCard {...props}   handleLikes={this.props.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
         </Grid> 
       })
     }

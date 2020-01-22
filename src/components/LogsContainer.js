@@ -43,7 +43,7 @@ class LogsContainer extends Component  {
     const props = this.props;
     if(logs){
       return logs.map(log => {
-        return <Grid item sm> <LogCard {...props} user={log.user_email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
+        return <Grid item sm> <LogCard {...props} handleLikes={this.props.handleLikes} user={log.user_email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })
     }
   }
