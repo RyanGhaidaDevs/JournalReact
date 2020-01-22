@@ -62,6 +62,13 @@ const useStyles = makeStyles(theme => ({
   bugButton: {
     color: 'orange'
   },
+  allLogs: {
+    marginRight: 12,
+    marginLeft: 12,
+    fontSize: '14px',
+    padding: '10px',
+    color: 'orange'
+  },
   userEmail: {
     color: 'orange'
   }
@@ -69,16 +76,6 @@ const useStyles = makeStyles(theme => ({
 
 const NavBar = (props) => {
    const classes = useStyles();
-  // const [modalStyle] = React.useState(getModalStyle);
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
 
   const logOut = () => {
     props.handleLogout();
@@ -114,12 +111,15 @@ const NavBar = (props) => {
           : 
            "" 
           }
-
+          
+          <Button  onClick={()=> props.history.push("/alllogs")} className={classes.allLogs} color="inherit" aria-label="About">
+            View all users logs
+          </Button>
           <Button  onClick={()=> props.history.push("/homepage")} className={classes.NavBarButtons} color="inherit" aria-label="About">
             View/Select Project
           </Button>
           <Button id="bugLogs" onClick={()=> props.history.push("/logs")} className={classes.NavBarButtons} color="inherit" aria-label="View">
-            View Your Bug Logs
+            View Project Bug Logs
           </Button>
           <Button onClick={()=> props.history.push("/addProject")} className={classes.NavBarButtons} color="inherit" aria-label="About">
             Add Project

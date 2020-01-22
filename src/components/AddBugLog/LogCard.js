@@ -24,19 +24,28 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 24,
-    color: '#637299'
+    color: '#637299',
+    backgroundColor: "Silver",
+    marginBottom: 10,
+
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
   },
   description: {
     fontSize: 16,
-    color: 'grey'
+    color: 'grey',
+    marginBottom: 10,
   },
   languages: {
     fontSize: 14,
-    color: 'grey'
+    color: 'grey',
+    margin: 10,
   },
   solution: {
     fontSize: 16,
-    color: '#637299'
+    color: '#637299',
+    
   },
   notes: {
     fontSize: 12,
@@ -90,11 +99,12 @@ export default function SimpleCard(props) {
         <Typography className={classes.description} variant="h5" component="h4">
          Description: {props.log.bugDescription}
         </Typography>
-        <Typography className={classes.languages} >
-         Languages: {props.log.languagesInvolved}
-        </Typography>
+       
         <Typography className={classes.solution}>
           Solution: {props.log.solution}
+        </Typography>
+        <Typography className={classes.languages} >
+         Languages: {props.log.languagesInvolved}
         </Typography>
         <Typography className={classes.notes} >
          Notes: {props.log.notes}
@@ -135,7 +145,7 @@ export default function SimpleCard(props) {
              {props.log.likes}
              
             </Typography>
-          <ThumbDownAltIcon style={{fill: "grey"}} onClick={()=> props.handleLikes(props.log.id, -1)}/>
+          <ThumbDownAltIcon style={{fill: "Maroon"}} onClick={()=> props.handleLikes(props.log.id, -1)}/>
         </div>
           }
           
