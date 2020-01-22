@@ -40,9 +40,11 @@ const styles = {
 };
 
  class Confirmation extends Component {
+  constructor(props){
+    super(props);
+  }
 
-
-   back = event => {
+  back = event => {
     event.preventDefault();
     this.props.prevStep();
   }
@@ -63,51 +65,91 @@ const styles = {
          justify="center" 
          style={{ minHeight: '100vh'}} >
         
-          <List>
-            <ListItem className={classes.root}> 
-            <ListItemText 
-            className={classes.root} 
-            primary={<span style={{fontSize: 28}}>Bug Title</span>} 
-            secondary={<span style={{fontSize: 18}}> {bugTitle}</span>} 
-            /> 
+        <Grid item xs={3}>
+        </Grid> 
+        <TextField
+          className={classes.root} 
+          placeholder="title and/or key words"
+          label="Bug Title"
+          name="bugTitle"
+          onChange={this.handleChange}
+          defaultValue={bugTitle}
+          inputProps={{
+            style: {fontSize: 28, padding: 40, width: 500}
+          }}
+          />
+
+          <TextField 
+          className={classes.root}
+          placeholder="describe the context, nature and details of the bug"
+          label="Bug Description"
+          name="bugDescription"
+          multiline
+
+          rowsMax="100"
+          onChange={this.handleChange}
+          defaultValue={bugDescription}
+          inputProps={{
+            style: {fontSize: 18, padding: 40, width: 500, lineHeight: 1},
+            
+          }}
+          />
+
+          <TextField 
+          className={classes.root}
+          placeholder="i.e. JS, Ruby..."
+          label="Languages involved"
+          name="languagesInvolved"
+          multiline
+          rowsMax="10"
+          onChange={this.handleChange}
+          defaultValue={languagesInvolved}
+          inputProps={{
+            style: {fontSize: 18, padding: 40, width: 500} 
+          }}
+          />
+
+          <TextField 
+          className={classes.root}
+          placeholder="relevant links"
+          label="Links"
+          name="links"
+          onChange={this.handleChange}
+          defaultValue={links}
+          inputProps={{
+            style: {fontSize: 18, padding: 40, width: 500}
+          }}
+          />
+
+          <TextField 
+          className={classes.root}
+          placeholder="solution"
+          label="Bug Solution"
+          name="solution"
+          multiline
          
-            </ListItem>
-            <ListItem className={classes.root}> 
-             <ListItemText
-             className={classes.root} 
-              primary={<span style={{fontSize: 28}}> Description</span>}
-              secondary={<span style={{fontSize: 18}}> {bugDescription}</span>}
-            />
-            </ListItem>
-            <ListItem className={classes.root}> 
-             <ListItemText 
-             className={classes.root}
-              primary={<span style={{fontSize: 28}}>Languages Involved</span>}
-              secondary={<span style={{fontSize: 18}}> {languagesInvolved}</span>}
-            />
-            </ListItem>
-            <ListItem className={classes.root}> 
-             <ListItemText 
-             className={classes.root}
-              primary={<span style={{fontSize: 28}}> Relevant Links</span>}
-              secondary={<span style={{fontSize: 18}}> {links}</span>}
-            />
-            </ListItem>
-            <ListItem className={classes.root}> 
-             <ListItemText 
-             className={classes.root}
-              primary={<span style={{fontSize: 28}}> Bug Solution</span>}
-              secondary={<span style={{fontSize: 18}}> {solution}</span>}
-            />
-            </ListItem>
-            <ListItem className={classes.root}> 
-             <ListItemText 
-             className={classes.root}
-              primary={<span style={{fontSize: 28}}> Notes</span>}
-              secondary={<span style={{fontSize: 18}}> {notes}</span>}
-            />
-            </ListItem>
-          </List> 
+          rowsMax="100"
+          onChange={this.handleChange}
+          defaultValue={solution}
+          inputProps={{
+            style: {fontSize: 18, padding: 40, width: 500,  lineHeight: 1}, 
+          }}
+          />
+
+          <TextField 
+          className={classes.root}
+          placeholder="additional notes; dependecies, versions etc. "
+          label="Notes"
+          name="notes"
+          multiline
+          
+          rowsMax="100"
+          onChange={this.handleChange}
+          defaultValue={notes}
+          inputProps={{
+            style: {fontSize: 18, padding: 40, width: 500,lineHeight: 1},
+          }}
+          /> 
           
           <Button 
           label="confirm & continue"
@@ -118,17 +160,6 @@ const styles = {
           > 
           Confirm 
           </Button>
-
-          <Button 
-          label="back"
-          primary={"false"}
-          margin='15'
-          onClick={this.back}
-          className={classes.Back}
-          > Back 
-          </Button>
-          
-         
         </Grid> 
           
       </MuiThemeProvider>

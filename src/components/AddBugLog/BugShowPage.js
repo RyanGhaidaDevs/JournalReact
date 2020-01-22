@@ -191,7 +191,7 @@ class BugShowPage extends Component {
           margin='15'
           onClick={this.handleSubmit}
           >
-            Submit 
+            Update
           </Button>
       </Grid> 
       </MuiThemeProvider>
