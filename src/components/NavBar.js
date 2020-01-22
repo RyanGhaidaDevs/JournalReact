@@ -10,16 +10,16 @@ import Login from './auth/Login';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import Registration from './auth/Registration';
 
-function getModalStyle() {
-  const top = 40 
-  const left = 42
+// function getModalStyle() {
+//   const top = 40 
+//   const left = 39
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    height: `30%`
-  };
-}
+//   return {
+//     top: `${top}%`,
+//     left: `${left}%`,
+//     height: `30%`
+//   };
+// }
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,9 +35,9 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     width: 400,
     backgroundColor: 'white',
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(4, 4, 4),
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 20px 2px rgb(192,192,192)',
   },
   NavBarButtons: {
     marginRight: 12,
@@ -53,10 +53,8 @@ const useStyles = makeStyles(theme => ({
     color: "orange"
   },
   loginCloseButton: {
-    marginLeft: -10,
-    marginTop: -20,
     fontSize: '24px',
-    color: 'grey'
+    color: 'orange'
   },
   navbar:{
     backgroundColor: '#637299'
@@ -70,18 +68,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = (props) => {
-  const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
+   const classes = useStyles();
+  // const [modalStyle] = React.useState(getModalStyle);
+  // const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    console.log("clicked")
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   const logOut = () => {
     props.handleLogout();
@@ -147,7 +144,7 @@ const NavBar = (props) => {
         </div>  
         : 
         <div> 
-            <Button  onClick={handleOpen} style={ {fontSize: '14px'} } color="inherit">
+            <Button  onClick={()=> props.history.push("/login")} style={ {fontSize: '14px'} } color="inherit">
               Login
             </Button> 
             <Button onClick={()=> props.history.push("/registration")} style={ {fontSize: '14px'} } color="inherit">
@@ -158,12 +155,12 @@ const NavBar = (props) => {
       </Toolbar>
     </AppBar>
 
-    <Modal aria-labelledby="login" aria-describedby="login-modal" open={open}>
+    {/* <Modal aria-labelledby="login" aria-describedby="login-modal" open={open}>
       <div style={modalStyle} className={classes.paper}>
         <Button className={classes.loginCloseButton} onClick={handleClose}> X </Button>
         <Login  onClick={handleClose} handleLogin={props.handleLogin} />
       </div>
-    </Modal>
+    </Modal> */}
   </div>
   );
 }

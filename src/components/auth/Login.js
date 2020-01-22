@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Button  from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
 
+const styles = {
+  root: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 20px 2px rgb(192,192,192)',
+  },
+  loginTitle: {
+    color: "#637299"
+  }
+
+  };
 
 
-export default class Login extends Component {
+ class Login extends Component {
   constructor(props){
     super(props);
 
@@ -45,6 +58,7 @@ export default class Login extends Component {
       console.log("login response", response)
       if (response.data.logged_in){
       this.props.handleLogin(response.data)
+      this.props.history.push("/homepage")
       } // add error handling here
     }).catch( err => {
       console.log("login error", err)
@@ -52,16 +66,20 @@ export default class Login extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <div id="loginParent">
+      <div id="loginParent"   style={{marginTop: 250}} class={classes.root}>
         <div id="loginChild">
-        <h2 style={{marginBottom: 20}}> Welcome Back! </h2> 
-        <h3 style={{marginBottom: 10}}> Please enter your email and password below.</h3> 
+        <h2 class={classes.loginTitle} style={{marginBottom: 20, marginTop: 20}}> Welcome Back! </h2> 
+        <h3 style={{marginBottom: 40, color:"orange"}}> Please enter your email and password below.</h3> 
         <form onSubmit={this.handleSubmit} > 
         <h3> Email </h3>  
         <input 
         style={
-          {fontSize: 22} 
+          {fontSize: 22,
+            margin: 20,
+            width: 325} 
         }
           className="login-form-input"
           type="email" 
@@ -76,7 +94,9 @@ export default class Login extends Component {
        <h3> Password </h3>
         <input 
         style={
-          {fontSize: 22} 
+          {fontSize: 22,
+            margin: 20,
+            width: 325} 
         }
           className="login-form-input"
           type="password" 
@@ -86,6 +106,7 @@ export default class Login extends Component {
           onChange={this.handleChange} 
           required 
         />
+        <br/>
         
         <Button 
           label="submit"
@@ -96,7 +117,7 @@ export default class Login extends Component {
           size="small"
           style={
             {fontSize: 24,
-              color: 'grey',
+              color: 'orange',
               padding: 10,
             } 
           }
@@ -108,3 +129,6 @@ export default class Login extends Component {
     )
   }
 }
+
+
+export default withStyles(styles)(Login)

@@ -12,6 +12,9 @@ const styles = {
     boxShadow: '0 3px 20px 2px rgb(192,192,192)',
     
   },
+  registrationTitle: {
+    color: "#637299"
+  }
 
   };
 
@@ -69,14 +72,14 @@ const styles = {
     return (
       <div id="regParent" style={{marginTop: 250}} class={classes.root}>
         <div id="regChild"> 
-        <h2 style={{marginBottom: 20,
-        marginTop: 30, color: "#637299"}}>  Welcome to BugLogger! </h2> 
+        <h2 class={classes.registrationTitle} style={{ marginTop: 20,marginBottom: 20}}>  Welcome to BugLogger! </h2> 
         <h3 style={{marginBottom: 40, color: "orange" } }> To create an account please enter a valid email and password. </h3> 
         <form onSubmit={this.handleSubmit} > 
-         
+        <h3> Email </h3> 
         <input 
         style={
           {fontSize: 22,
+            margin: 10,
           width: 325} 
         }
           type="email" 
@@ -87,6 +90,7 @@ const styles = {
           required 
         />
         <br/>
+        <h3> Password </h3>
         
         <input 
         style={
@@ -126,8 +130,8 @@ const styles = {
           size="small"
           style={
             {fontSize: 24,
-              color: '#637299',
-              padding: 30,
+              color: 'orange',
+              padding: 10,
             } 
           }
           color="inherit"

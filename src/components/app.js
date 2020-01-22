@@ -10,6 +10,7 @@ import BugShowPage from './AddBugLog/BugShowPage';
 import ProjectsContainer from './ProjectsContainer';
 import AllLogs from './AllLogs';
 import Registration from './auth/Registration';
+import Login from './auth/Login'; 
 
 export default class App extends Component {
   constructor() {
@@ -114,6 +115,15 @@ export default class App extends Component {
               <div> 
                 <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
                 <Registration {...props} handleLogin={this.handleLogin} /> 
+              </div> 
+            )}
+          /> 
+          <Route 
+            path={"/login"} 
+            render={ props => (
+              <div> 
+                <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
+                <Login {...props} handleLogin={this.handleLogin} /> 
               </div> 
             )}
           /> 

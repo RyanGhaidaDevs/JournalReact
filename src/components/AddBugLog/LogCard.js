@@ -55,7 +55,6 @@ const useStyles = makeStyles({
   Edit: {
     color: "orange",
     border: "groove",
-    background: "grey",
     width: 75,
     fontSize: "12",
   }
