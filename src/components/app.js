@@ -103,14 +103,7 @@ export default class App extends Component {
     this.setState({editLog: log}, () => props.history.push("/editLog"))
   }
 
-  handleLikes = (logId, like) => {
-    if(like === "like"){
-      
-    }
-    else {
-      
-    }
-  }
+  
 
   render() {
     return (
@@ -151,7 +144,7 @@ export default class App extends Component {
             render={ props => (
               <div> 
                 <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-                <LogsContainer {...props} handleLikes={this.handleLikes} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+                <LogsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
           /> 
@@ -161,7 +154,7 @@ export default class App extends Component {
             render={ props => (
               <div> 
                 <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-                <AllLogs {...props} handleLikes={this.handleLikes} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+                <AllLogs {...props}  handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
           /> 

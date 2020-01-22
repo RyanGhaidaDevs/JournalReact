@@ -29,6 +29,8 @@ class LogsContainer extends Component  {
 
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleLikes = this.handleLikes.bind(this);
+
   }
 
   componentDidMount() {
@@ -43,7 +45,7 @@ class LogsContainer extends Component  {
     const props = this.props;
     if(logs){
       return logs.map(log => {
-        return <Grid item sm> <LogCard {...props} handleLikes={this.props.handleLikes} user={log.user_email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
+        return <Grid item sm> <LogCard {...props} handleLikes={this.handleLikes} user={log.user_email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> </Grid> 
       })
     }
   }
@@ -54,7 +56,7 @@ class LogsContainer extends Component  {
       if(filteredLogs){
         return filteredLogs.map(log => {
           return <Grid item sm> 
-            <LogCard {...props} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
+            <LogCard {...props} handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
           </Grid> 
         })
       }
@@ -70,6 +72,22 @@ class LogsContainer extends Component  {
            filteredLogs: filteredLogs
          })
       })  
+    }
+
+    handleLikes(logId, like){
+        axios.patch("http://localhost:3001/logLikes",{
+        user: {
+          id: logId,
+          likes: 1 
+        }
+      }, { withCredentials: true }).then( response => { 
+         this.setState({
+           logs: response.data.logs
+         })
+      })
+      .catch( error => {
+        console.log("posting like error", error)
+      });
     }
 
 

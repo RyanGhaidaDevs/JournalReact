@@ -69,6 +69,7 @@ const useStyles = makeStyles({
   }
 });
 
+ 
 
 
 export default function SimpleCard(props) {
@@ -100,11 +101,11 @@ export default function SimpleCard(props) {
          {props.log.user_email.split("@")[0]}
         </Typography>
         <div id="box">
-          <ThumbUpAltIcon style={{fill: "#18727A"}} onClick={()=> props.handleLikes(props.log.id, "like") }/>
+          <ThumbUpAltIcon style={{fill: "#18727A"}} onClick={()=> props.handleLikes(props.log.id, 1)}/>
           <Typography className={classes.likes} color="textPrimary" gutterBottom>
           {props.log.likes}
           </Typography>
-          <ThumbDownAltIcon style={{fill: "grey"}} onClick={()=> props.handleLikes(props.log.id, "dislike")}/>
+          <ThumbDownAltIcon style={{fill: "grey"}} onClick={()=> props.handleLikes(props.log.id, -1)}/>
         </div>
         <Typography className={classes.date} color="textPrimary" gutterBottom>
           Created: {props.log.created_at.split("T")[0]}

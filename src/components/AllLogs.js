@@ -31,6 +31,8 @@ class AllLogs extends Component  {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleLikes = this.handleLikes.bind(this);
+
 
   }
 
@@ -44,7 +46,7 @@ class AllLogs extends Component  {
     if(logs){
       return logs.map(log => {
         return <Grid item sm> 
-          <LogCard {...props} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
+          <LogCard {...props}  handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
         </Grid> 
       })
     }
@@ -56,7 +58,7 @@ class AllLogs extends Component  {
     if(filteredLogs){
       return filteredLogs.map(log => {
         return <Grid item sm> 
-          <LogCard {...props}   handleLikes={this.props.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
+          <LogCard {...props}   handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
         </Grid> 
       })
     }
@@ -75,6 +77,31 @@ class AllLogs extends Component  {
        })
     })  
    }
+
+   handleLikes(logId, like){
+    if(like === 1){
+      axios.patch("http://localhost:3001/logLikes",{
+      user: {
+        id: logId,
+        likes: 1 
+      }
+    }, { withCredentials: true }).then( response => { console.log(response.data.log.likes)})
+    .catch( error => {
+      console.log("posting like error", error)
+    });
+    }
+    else {
+      axios.patch("http://localhost:3001/logLikes",{
+      user: {
+        id: logId,
+        likes: -1 
+      }
+    }, { withCredentials: true }).then( response => { console.log(response)})
+    .catch( error => {
+      console.log("posting like error", error)
+    });
+    }
+  }
 
   render(){
     const { classes } = this.props;
