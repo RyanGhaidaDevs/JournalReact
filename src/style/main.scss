@@ -83,10 +83,11 @@ html {
    width: 300px;
 }
 
-.modal-login{
-    display: block; 
-    width: 1400px; 
-}
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
 .searchParent {
     text-align: center;

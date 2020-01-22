@@ -5,6 +5,10 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
+import Box from '@material-ui/core/Box';
+
 
 const useStyles = makeStyles({
   card: {
@@ -38,6 +42,11 @@ const useStyles = makeStyles({
   user: {
     fontSize: 14,
     color: 'orange'
+  },
+  likes: {
+    fontSize: 18,
+    color: 'orange',
+    margin: 10
   },
   date: {
     fontSize: 12,
@@ -83,15 +92,32 @@ export default function SimpleCard(props) {
         <Typography className={classes.notes} >
          Notes: {props.log.notes}
         </Typography>
+        
         <Typography className={classes.user} color="textPrimary" gutterBottom>
          {props.log.user_email.split("@")[0]}
         </Typography>
+        <div id="box">
+        
+         
+          <ThumbUpAltIcon style={{fill: "green"}}/>
+      
+         
+          <Typography className={classes.likes} color="textPrimary" gutterBottom>
+          {props.log.likes}
+          </Typography>
+      
+         
+          <ThumbDownAltIcon style={{fill: "grey"}}/>
+      
+      
+        </div>
         <Typography className={classes.date} color="textPrimary" gutterBottom>
           Created: {props.log.created_at.split("T")[0]}
         </Typography>
         <Typography className={classes.date} color="textPrimary" gutterBottom>
           Last Updated: {props.log.updated_at.split("T")[0]}
         </Typography>
+        
       </CardContent>
       {props.log.user_email === props.user ? 
          <CardActions>

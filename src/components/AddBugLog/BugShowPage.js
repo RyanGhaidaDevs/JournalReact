@@ -124,7 +124,6 @@ class BugShowPage extends Component {
           defaultValue={this.props.log.bugDescription}
           inputProps={{
             style: {fontSize: 18, padding: 40, width: 500, lineHeight: 1},
-            
           }}
           />
 

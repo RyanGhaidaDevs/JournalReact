@@ -74,6 +74,7 @@ const styles = {
           name="bugTitle"
           onChange={this.handleChange}
           defaultValue={bugTitle}
+          validations={["required", "min:4"]}
           inputProps={{
             style: {fontSize: 28, padding: 40, width: 500}
           }}
