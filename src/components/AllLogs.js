@@ -44,7 +44,9 @@ class AllLogs extends Component  {
     const logs = this.state.logs;
     const props = this.props;
     if(logs){
-      return logs.map(log => {
+      return logs.sort(function(a, b) { 
+        return a.id - b.id
+      }).map(log => {
         return <Grid item sm> 
           <LogCard {...props}  handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
         </Grid> 
@@ -56,7 +58,9 @@ class AllLogs extends Component  {
     let filteredLogs = this.state.filteredLogs;
     let props = this.props;
     if(filteredLogs){
-      return filteredLogs.map(log => {
+      return filteredLogs.sort(function(a, b) { 
+        return a.id - b.id
+      }).map(log => {
         return <Grid item sm> 
           <LogCard {...props}   handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
         </Grid> 
@@ -76,32 +80,22 @@ class AllLogs extends Component  {
          filteredLogs: filteredLogs
        })
     })  
-   }
+  }
 
    handleLikes(logId, like){
-    if(like === 1){
-      axios.patch("http://localhost:3001/logLikes",{
+    axios.patch("http://localhost:3001/logLikes",{
       user: {
         id: logId,
-        likes: 1 
-      }
-    }, { withCredentials: true }).then( response => { console.log(response.data.log.likes)})
-    .catch( error => {
-      console.log("posting like error", error)
-    });
-    }
-    else {
-      axios.patch("http://localhost:3001/logLikes",{
-      user: {
-        id: logId,
-        likes: -1 
-      }
-    }, { withCredentials: true }).then( response => { console.log(response)})
-    .catch( error => {
-      console.log("posting like error", error)
-    });
-    }
-  }
+        likes: like
+      }}, { withCredentials: true }).then( response => { 
+        this.setState({
+          logs: response.data.allLogs
+        })
+      })
+      .catch( error => {
+        console.log("posting like error", error)
+  });
+}
 
   render(){
     const { classes } = this.props;

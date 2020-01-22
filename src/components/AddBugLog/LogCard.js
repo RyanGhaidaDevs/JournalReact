@@ -8,7 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import Box from '@material-ui/core/Box';
-
+import StarRateIcon from '@material-ui/icons/StarRate';
+import NewReleasesIcon from '@material-ui/icons/NewReleases';
+import StarHalfIcon from '@material-ui/icons/StarHalf';
+import FiberNewIcon from '@material-ui/icons/FiberNew';
 
 const useStyles = makeStyles({
   card: {
@@ -100,13 +103,42 @@ export default function SimpleCard(props) {
         <Typography className={classes.user} color="textPrimary" gutterBottom>
          {props.log.user_email.split("@")[0]}
         </Typography>
-        <div id="box">
-          <ThumbUpAltIcon style={{fill: "#18727A"}} onClick={()=> props.handleLikes(props.log.id, 1)}/>
+        {props.log.likes === 0 
+          ? 
+          <FiberNewIcon   fontSize="large" style={{fill: "green", marginBottom: -10, fontSize:"default"}}/> 
+            : props.log.likes > 0  
+              ? props.log.likes < 10 
+                ? <StarRateIcon style={{fill: "orange", marginBottom: -10}}/> 
+                  : props.log.likes > 10 ?
+                    <div> 
+                      <StarRateIcon style={{fill: "orange", marginBottom: -10}}/>
+                      <StarRateIcon style={{fill: "orange", marginBottom: -10}}/>
+                      <StarRateIcon style={{fill: "orange", marginBottom: -10}}/>
+                    </div> 
+                      : 
+                    <div> 
+                      <StarRateIcon style={{fill: "orange", marginBottom: -10}}/>
+                      <StarRateIcon style={{fill: "orange", marginBottom: -10}}/>
+                    </div>
+              : 
+            <StarHalfIcon style={{fill: "orange", marginBottom: -10}}/> 
+          }
+        
+        
+        {props.log.user_email === props.user ? 
           <Typography className={classes.likes} color="textPrimary" gutterBottom>
-          {props.log.likes}
+            {props.log.likes}
           </Typography>
+        : 
+        <div id="box"> <ThumbUpAltIcon style={{fill: "#18727A"}} onClick={()=> props.handleLikes(props.log.id, 1)}/>
+            <Typography className={classes.likes} color="textPrimary" gutterBottom>
+             {props.log.likes}
+             
+            </Typography>
           <ThumbDownAltIcon style={{fill: "grey"}} onClick={()=> props.handleLikes(props.log.id, -1)}/>
         </div>
+          }
+          
         <Typography className={classes.date} color="textPrimary" gutterBottom>
           Created: {props.log.created_at.split("T")[0]}
         </Typography>
