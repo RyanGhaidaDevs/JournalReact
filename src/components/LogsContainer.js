@@ -86,7 +86,13 @@ class LogsContainer extends Component  {
 
 
   handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
+    axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => {
+      const projectLogs = data.data.logs.filter(log => log.project_id === this.props.projectSelected.id)
+      debugger
+      this.setState({
+        logs: projectLogs
+      })
+    })
   }
 
 

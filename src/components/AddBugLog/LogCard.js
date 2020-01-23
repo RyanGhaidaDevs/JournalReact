@@ -160,11 +160,8 @@ export default function SimpleCard(props) {
       {props.log.user_email === props.user ? 
          <CardActions>
            <div class="cardButtonParentDiv"> 
-            {props.class === "edit" ? 
-              <div class="carbButtons">  
-                <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
-                <Button className={classes.Delete} onClick={()=> props.handleDelete(props.log.id) }> Delete </Button>
-              </div> 
+            {props.className === "allLogs" ? 
+              ""
               : 
               <div class="carbButtons"> 
                 <Button className={classes.Edit} onClick={()=> props.handleEdit(props.log, props) }> Edit </Button>

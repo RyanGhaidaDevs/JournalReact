@@ -48,7 +48,7 @@ class AllLogs extends Component  {
         return a.id - b.id
       }).map(log => {
         return <Grid item sm> 
-          <LogCard {...props}  handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
+          <LogCard {...props}  handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} className="allLogs" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
         </Grid> 
       })
     }
@@ -62,7 +62,7 @@ class AllLogs extends Component  {
         return a.id - b.id
       }).map(log => {
         return <Grid item sm> 
-          <LogCard {...props}   handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} class="not edit" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
+          <LogCard {...props}   handleLikes={this.handleLikes} user={this.props.user.email} key={log.id} className="allLogs" handleEdit={this.props.handleEdit} handleDelete={this.handleDelete} log={log} /> 
         </Grid> 
       })
     }
