@@ -1,52 +1,179 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LogCard from './AddBugLog/LogCard';
-import Background from './Images/background.jpg';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core';
-import AddProject from './AddProject';
 import ProjectCard from './ProjectCard';
+import TextField from '@material-ui/core/TextField';
+import Button  from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
 
+const styles = {
+  root: {
+    background: 'white',
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+  },
+  Create: {
+    color: "grey",
+    border: "groove",
+    background: "white",
+    fontSize: 18,
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+  },
+};
 
-export default class ProjectsContainer extends Component  {
+
+class ProjectsContainer extends Component  {
   constructor(props) {
     super(props);
+
+    this.state = {
+      projects: false, 
+      projectSelected: false,
+      name: ""
+    }
+
+    this.setProjects = this.setProjects.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
+
   componentDidMount() {
-     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.props.setProjects(data))
+     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.setState({
+       projects: data.data
+     }))
   }
 
   handleSelect = (projectId) => {
-    console.log(projectId)
-    this.props.setSelectedProject(projectId);
+    if(projectId === this.state.projectSelected.id){
+      this.setState({
+        projectSelected: false  
+      }, () => this.props.setSelectedProject(false))
+    }
+    else if (!this.state.projects.find((project) => project.id == projectId)) {
+      axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.setProjects(data)).then(() =>{
+      const project = this.state.projects.find((project) => project.id == projectId)
+      this.setState({
+        projectSelected: project
+      }, () => this.props.setSelectedProject(project))
+      } )
+    }
+    else{
+      const project = this.state.projects.find((project) => project.id == projectId)
+      this.setState({
+        projectSelected: project
+      }, () => this.props.setSelectedProject(project))
+    }
+  }
+
+  setProjects(projects){
+    this.setState({
+      projects: projects.data
+    })
   }
 
   handleDelete = (id) => {
-    console.log(id)
-     axios.delete(`http://localhost:3001/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.props.setProjects(data))
+     axios.delete(`http://localhost:3001/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({
+        projects: data.data
+     })).then(() => this.props.setSelectedProject(false))
   }
 
+  handleChange = (event) =>  {
+    this.setState({
+      [event.target.name]: event.target.value
+    }, ()=> console.log(this.state))
+  }
+
+
+  handleSubmit = (event)=> {
+    event.preventDefault();
+
+    const {name} = this.state 
+
+    axios.post("http://localhost:3001/projects",{
+      user: {
+        name: name,
+      }
+    }, 
+    { withCredentials: true }
+    ).then( response => {
+      console.log(this.props)
+      this.props.setSelectedProject(response.data.project)
+      this.props.history.push("/addLog")
+    }).catch( error => {
+      console.log("posting project error", error)
+    });
+  };
+
   displayProjects(){
-    const projects = this.props.projects;
+    const projects = this.state.projects;
     const selectedProject = this.props.selectedProject
-    if(projects.length > 0){
+    if(projects){
       return projects.map(project => {
-        return <Grid item xl> <ProjectCard selectedProject={selectedProject} handleDelete={this.handleDelete} handleSelect={this.handleSelect}  id={project.id} project={project}> </ProjectCard></Grid> 
+        return <Grid item xl> <ProjectCard  handleDelete={this.handleDelete} handleSelect={this.handleSelect}  id={project.id} project={project}> </ProjectCard></Grid> 
       })
     }
   }
 
 
   render(){
+    const { classes } = this.props;
+
     return(
       <div>
-        {this.props.projects.length === 0 ? <AddProject handleSelect={this.handleSelect}/> : <div> <Grid container> {this.displayProjects()} </Grid> </div> }
+        {this.state.projects.length === 0 ? 
+        <div>  
+          <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: '100vh' }}
+          >
+        <Grid item xs={3}>
+        </Grid>   
+
+          <TextField 
+            className={classes.root}
+            margin="normal"
+            placeholder="Project Name"
+            label="Project Name"
+            name="name"
+            onChange={this.handleChange}         
+            inputProps={{
+              style: {fontSize: 28, padding: 40, width: 500}
+            }}
+            />
+
+            <Button 
+            className={classes.Create}
+            label="submit"
+            primary={"true"}
+            margin='15'
+            onClick={this.handleSubmit}
+            >
+              Create Project 
+            </Button>
+          </Grid>
+       </div> : 
+       <div> 
+         <Grid container> 
+          {this.displayProjects()} 
+         </Grid> 
+         </div> 
+        }
       </div>
     )
   }
 }
 
+export default withStyles(styles)(ProjectsContainer)
 
  

@@ -53,8 +53,8 @@ export default function ProjectCard(props) {
         </Typography> 
       </CardContent>
       <CardActions>
-          <div class="cardButtonParentDiv"> 
-            <div class="carbButtons">  
+          <div className="cardButtonParentDiv"> 
+            <div className="carbButtons">  
               <Button  className={classes.Select}onClick={()=> props.handleSelect(props.project.id) }> {props.selectedProject === props.project ? "Unselect" : "Select"} </Button>
               <Button className={classes.Delete} onClick={()=> props.handleDelete(props.project.id) }> Delete </Button>
             </div>

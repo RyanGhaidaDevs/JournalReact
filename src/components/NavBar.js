@@ -10,16 +10,6 @@ import Login from './auth/Login';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import Registration from './auth/Registration';
 
-// function getModalStyle() {
-//   const top = 40 
-//   const left = 39
-
-//   return {
-//     top: `${top}%`,
-//     left: `${left}%`,
-//     height: `30%`
-//   };
-// }
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -116,14 +106,12 @@ const NavBar = (props) => {
             View all users logs
           </Button>
           <Button  onClick={()=> props.history.push("/homepage")} className={classes.NavBarButtons} color="inherit" aria-label="About">
-            View/Select Project
+            Add/Select Project
           </Button>
           <Button id="bugLogs" onClick={()=> props.history.push("/logs")} className={classes.NavBarButtons} color="inherit" aria-label="View">
             View Project Bug Logs
           </Button>
-          <Button onClick={()=> props.history.push("/addProject")} className={classes.NavBarButtons} color="inherit" aria-label="About">
-            Add Project
-          </Button> 
+          
           </div>
           : 
           "" 

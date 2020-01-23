@@ -32,7 +32,7 @@ class AllLogs extends Component  {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleLikes = this.handleLikes.bind(this);
-
+    this.handleDelete = this.handleDelete.bind(this)
 
   }
 
@@ -66,6 +66,10 @@ class AllLogs extends Component  {
         </Grid> 
       })
     }
+  }
+
+  handleDelete(id){
+    axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
   }
     
 
