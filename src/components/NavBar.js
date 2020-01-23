@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 12,
     fontSize: '14px',
     padding: '10px',
-    color: "orange"
+    color: "white"
   },
   loginCloseButton: {
     fontSize: '24px',
@@ -103,7 +103,7 @@ const NavBar = (props) => {
           }
            {props.projectSelected != false ? 
               <Button onClick={()=> props.history.push("/projectlogs")} className={classes.AddBugLog} color="inherit" aria-label="Add">
-              View Project Logs
+              View Topic Logs
               </Button>
           : 
            "" 
@@ -114,7 +114,7 @@ const NavBar = (props) => {
           </Button>
         
           <Button  onClick={()=> props.history.push("/homepage")} className={classes.NavBarButtons} color="inherit" aria-label="About">
-            Add/Select Project
+            Add/Select Topic
           </Button>
           </div>
           : 

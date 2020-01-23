@@ -14,27 +14,18 @@ const styles = {
     background: 'white',
     border: 5,
     borderRadius: 5,
-    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)',
   },
   Create: {
-    color: "grey",
-    border: "groove",
-    background: "white",
-    fontSize: 18,
-    border: 5,
-    borderRadius: 5,
-    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
-  },
-  addProject: {
     color: "orange",
     border: "groove",
     background: "white",
-    margin: 30,
     fontSize: 18,
     border: 5,
     borderRadius: 5,
     boxShadow: '0 3px 10px 2px rgb(192,192,192)'
   },
+
 };
 
 
@@ -147,32 +138,15 @@ class ProjectsContainer extends Component  {
 
     return(
       <div>
-        <div class='searchParent'>
-          <div class='searchChild'> 
-        <Button 
-            className={classes.addProject}
-            label="submit"
-            primary={"true"}
-            margin='15'
-            onClick={this.addProject}
-            >
-              Add new Project 
-            </Button>
-            </div> 
-        </div>
-        {this.state.projects.length === 0  || this.state.addProject === true ? 
-        <div>  
           <Grid
           container
           spacing={0}
           direction="column"
           alignItems="center"
           justify="center"
-          style={{ minHeight: '100vh' }}
+          style={{ }}
           >
-        <Grid item xs={3}>
-        </Grid>   
-
+        
           <TextField 
             className={classes.root}
             margin="normal"
@@ -181,7 +155,7 @@ class ProjectsContainer extends Component  {
             name="name"
             onChange={this.handleChange}         
             inputProps={{
-              style: {fontSize: 28, padding: 40, width: 500}
+              style: {fontSize: 28, padding: 20, width: 500}
             }}
             />
 
@@ -192,16 +166,13 @@ class ProjectsContainer extends Component  {
             margin='15'
             onClick={this.handleSubmit}
             >
-              Create Project 
+              Create Topic 
             </Button>
+            
+            <Grid container> 
+                {this.displayProjects()} 
+            </Grid> 
           </Grid>
-       </div> : 
-       <div> 
-         <Grid container> 
-          {this.displayProjects()} 
-         </Grid> 
-         </div> 
-        }
       </div>
     )
   }
