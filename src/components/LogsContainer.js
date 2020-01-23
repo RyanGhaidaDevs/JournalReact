@@ -28,13 +28,18 @@ class LogsContainer extends Component  {
       search: ""
 
     }
+
     this.handleChange = this.handleChange.bind(this);
-    this.handleLikes = this.handleLikes.bind(this);
 
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/logs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}, ()=>console.log(data)))
+    axios.get("http://localhost:3001/logs", { withCredentials: true }).then( data => {
+      const projectLogs = data.data.logs.filter(log => log.project_id === this.props.projectSelected.id)
+      this.setState({
+        logs: projectLogs
+      })
+    })
   }
 
      
@@ -78,21 +83,6 @@ class LogsContainer extends Component  {
       })  
     }
 
-    handleLikes(logId, like){
-        axios.patch("http://localhost:3001/logLikes",{
-        user: {
-          id: logId,
-          likes: like
-        }
-      }, { withCredentials: true }).then( response => { 
-         this.setState({
-           logs: response.data.logs
-         })
-      })
-      .catch( error => {
-        console.log("posting like error", error)
-      });
-    }
 
 
   handleDelete = (id) => {

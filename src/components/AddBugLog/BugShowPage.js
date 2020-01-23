@@ -78,7 +78,7 @@ class BugShowPage extends Component {
         notes: notes, 
         id: id 
       }
-    }, { withCredentials: true }).then( response => { this.props.history.push("logs")})
+    }, { withCredentials: true }).then( response => { this.props.history.push("/projectLogs")})
     .catch( error => {
       console.log("posting log error", error)
     });

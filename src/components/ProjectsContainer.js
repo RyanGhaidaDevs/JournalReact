@@ -25,6 +25,16 @@ const styles = {
     borderRadius: 5,
     boxShadow: '0 3px 10px 2px rgb(192,192,192)'
   },
+  addProject: {
+    color: "orange",
+    border: "groove",
+    background: "white",
+    margin: 30,
+    fontSize: 18,
+    border: 5,
+    borderRadius: 5,
+    boxShadow: '0 3px 10px 2px rgb(192,192,192)'
+  },
 };
 
 
@@ -33,6 +43,7 @@ class ProjectsContainer extends Component  {
     super(props);
 
     this.state = {
+      addProject: false,
       projects: false, 
       projectSelected: false,
       name: ""
@@ -90,6 +101,12 @@ class ProjectsContainer extends Component  {
     }, ()=> console.log(this.state))
   }
 
+  addProject = () => {
+    this.setState({
+      addProject: true
+    })
+  }
+
 
   handleSubmit = (event)=> {
     event.preventDefault();
@@ -104,6 +121,9 @@ class ProjectsContainer extends Component  {
     { withCredentials: true }
     ).then( response => {
       console.log(this.props)
+      this.setState({
+        addProject: false
+      })
       this.props.setSelectedProject(response.data.project)
       this.props.history.push("/addLog")
     }).catch( error => {
@@ -127,7 +147,20 @@ class ProjectsContainer extends Component  {
 
     return(
       <div>
-        {this.state.projects.length === 0 ? 
+        <div class='searchParent'>
+          <div class='searchChild'> 
+        <Button 
+            className={classes.addProject}
+            label="submit"
+            primary={"true"}
+            margin='15'
+            onClick={this.addProject}
+            >
+              Add new Project 
+            </Button>
+            </div> 
+        </div>
+        {this.state.projects.length === 0  || this.state.addProject === true ? 
         <div>  
           <Grid
           container

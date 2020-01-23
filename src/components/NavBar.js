@@ -95,9 +95,16 @@ const NavBar = (props) => {
         {props.user.email ? 
         <div>
           {props.projectSelected != false ? 
-            <Button onClick={()=> props.history.push("/addLog")} className={classes.AddBugLog} color="inherit" aria-label="Add">
+              <Button onClick={()=> props.history.push("/addLog")} className={classes.AddBugLog} color="inherit" aria-label="Add">
               Add a Bug Log
-            </Button>
+              </Button>
+          : 
+           "" 
+          }
+           {props.projectSelected != false ? 
+              <Button onClick={()=> props.history.push("/projectlogs")} className={classes.AddBugLog} color="inherit" aria-label="Add">
+              View Project Logs
+              </Button>
           : 
            "" 
           }
@@ -105,13 +112,10 @@ const NavBar = (props) => {
           <Button  onClick={()=> props.history.push("/alllogs")} className={classes.allLogs} color="inherit" aria-label="About">
             View all users logs
           </Button>
+        
           <Button  onClick={()=> props.history.push("/homepage")} className={classes.NavBarButtons} color="inherit" aria-label="About">
             Add/Select Project
           </Button>
-          <Button id="bugLogs" onClick={()=> props.history.push("/logs")} className={classes.NavBarButtons} color="inherit" aria-label="View">
-            View Project Bug Logs
-          </Button>
-          
           </div>
           : 
           "" 

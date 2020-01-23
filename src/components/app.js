@@ -115,21 +115,22 @@ export default class App extends Component {
           /> 
           <Route 
             exact 
-            path={"/logs"} 
+            path={"/projectlogs"} 
             render={ props => (
               <div> 
                 <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-                <LogsContainer {...props} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+                <LogsContainer {...props} projectSelected={this.state.projectSelected} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
-          /> 
-          <Route 
+          />
+
+           <Route  
             exact 
             path={"/alllogs"} 
             render={ props => (
               <div> 
                 <NavBar {...props}  projectSelected={this.state.projectSelected} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} user={this.state.user} /> 
-                <AllLogs {...props}  handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
+                <AllLogs {...props}  projectSelected={this.state.projectSelected} handleEdit={this.handleEdit} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/> 
               </div> 
             )}
           /> 

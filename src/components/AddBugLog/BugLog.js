@@ -71,7 +71,7 @@ import axios from 'axios';
     { withCredentials: true }
     ).then( response => {
       console.log("posting log response", response)
-      this.props.history.push("logs");
+      this.props.history.push("/projectlogs");
      // add error handling here
     }).catch( err => {
       console.log("posting log error", err)
