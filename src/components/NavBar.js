@@ -103,7 +103,7 @@ const NavBar = (props) => {
           }
            {props.projectSelected != false ? 
               <Button onClick={()=> props.history.push("/projectlogs")} className={classes.AddBugLog} color="inherit" aria-label="Add">
-              View Topic Logs
+              View Project Logs
               </Button>
           : 
            "" 
@@ -114,7 +114,7 @@ const NavBar = (props) => {
           </Button>
         
           <Button  onClick={()=> props.history.push("/homepage")} className={classes.NavBarButtons} color="inherit" aria-label="About">
-            Add/Select Topic
+            Add/Select Project
           </Button>
           </div>
           : 

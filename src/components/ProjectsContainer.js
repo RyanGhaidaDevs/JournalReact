@@ -166,7 +166,7 @@ class ProjectsContainer extends Component  {
             margin='15'
             onClick={this.handleSubmit}
             >
-              Create Topic 
+              Create Project 
             </Button>
             
             <Grid container> 
