@@ -1,2 +1,2 @@
-web: bundle exec rails s
+web: bin/boot
 
