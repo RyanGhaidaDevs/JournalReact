@@ -55,7 +55,7 @@ import axios from 'axios';
       notes
     } = this.state 
 
-    axios.post("http://localhost:3001/logs",{
+    axios.post("https://bugloggerapi.herokuapp.com/logs",{
       user: {
         bugTitle: bugTitle,
         bugDescription: bugDescription,

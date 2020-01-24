@@ -68,7 +68,7 @@ class BugShowPage extends Component {
     event.preventDefault();
     const {bugTitle, bugDescription,languagesInvolved,links,solution,notes,id } = this.state 
 
-    axios.patch("http://localhost:3001/logs",{
+    axios.patch("https://bugloggerapi.herokuapp.com/logs",{
       user: {
         bugTitle: bugTitle,
         bugDescription: bugDescription,

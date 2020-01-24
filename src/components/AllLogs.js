@@ -37,7 +37,7 @@ class AllLogs extends Component  {
   }
 
   componentDidMount() {
-     axios.get("http://localhost:3001/alllogs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
+     axios.get("https://bugloggerapi.herokuapp.com/alllogs", { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
   }
 
   displayLogs(){
@@ -69,7 +69,7 @@ class AllLogs extends Component  {
   }
 
   handleDelete(id){
-    axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
+    axios.delete(`https://bugloggerapi.herokuapp.com/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({logs: data.data.logs}))
   }
     
 
@@ -87,7 +87,7 @@ class AllLogs extends Component  {
   }
 
    handleLikes(logId, like){
-    axios.patch("http://localhost:3001/logLikes",{
+    axios.patch("https://bugloggerapi.herokuapp.com/logLikes",{
       user: {
         id: logId,
         likes: like

@@ -33,7 +33,7 @@ export default class App extends Component {
   }
 
   checkLoginStatus(){
-    axios.get("http://localhost:3001/logged_in", {withCredentials: true}).then(response => {
+    axios.get("https://bugloggerapi.herokuapp.com/logged_in", {withCredentials: true}).then(response => {
       if(response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN"){
         this.setState({
           loggedInStatus: "LOGGED_IN",
@@ -63,7 +63,7 @@ export default class App extends Component {
       projectSelected: false,
       user: {}
     })
-    axios.delete("http://localhost:3001/logout", {withCredentials: true}).catch(error => {
+    axios.delete("https://bugloggerapi.herokuapp.com/logout", {withCredentials: true}).catch(error => {
       console.log("logout error", error)
     })
   }

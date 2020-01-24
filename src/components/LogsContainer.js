@@ -34,7 +34,7 @@ class LogsContainer extends Component  {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/logs", { withCredentials: true }).then( data => {
+    axios.get("https://bugloggerapi.herokuapp.com/logs", { withCredentials: true }).then( data => {
       const projectLogs = data.data.logs.filter(log => log.project_id === this.props.projectSelected.id)
       this.setState({
         logs: projectLogs
@@ -86,7 +86,7 @@ class LogsContainer extends Component  {
 
 
   handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => {
+    axios.delete(`https://bugloggerapi.herokuapp.com/logs`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => {
       const projectLogs = data.data.logs.filter(log => log.project_id === this.props.projectSelected.id)
       debugger
       this.setState({

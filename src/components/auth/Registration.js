@@ -49,7 +49,7 @@ const styles = {
       password_confimration
     } = this.state 
 
-    axios.post("http://localhost:3001/registrations", {
+    axios.post("https://bugloggerapi.herokuapp.com/registrations", {
       user: {
         email: email, 
         password: password, 

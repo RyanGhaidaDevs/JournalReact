@@ -47,7 +47,7 @@ class ProjectsContainer extends Component  {
 
 
   componentDidMount() {
-     axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.setState({
+     axios.get("https://bugloggerapi.herokuapp.com/projects", { withCredentials: true }).then( data => this.setState({
        projects: data.data
      }))
   }
@@ -59,7 +59,7 @@ class ProjectsContainer extends Component  {
       }, () => this.props.setSelectedProject(false))
     }
     else if (!this.state.projects.find((project) => project.id == projectId)) {
-      axios.get("http://localhost:3001/projects", { withCredentials: true }).then( data => this.setProjects(data)).then(() =>{
+      axios.get("https://bugloggerapi.herokuapp.com/projects", { withCredentials: true }).then( data => this.setProjects(data)).then(() =>{
       const project = this.state.projects.find((project) => project.id == projectId)
       this.setState({
         projectSelected: project
@@ -81,7 +81,7 @@ class ProjectsContainer extends Component  {
   }
 
   handleDelete = (id) => {
-     axios.delete(`http://localhost:3001/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({
+     axios.delete(`https://bugloggerapi.herokuapp.com/projects`, {data: {user: {id: id}}}, { withCredentials: true }).then( data => this.setState({
         projects: data.data
      })).then(() => this.props.setSelectedProject(false))
   }
@@ -104,7 +104,7 @@ class ProjectsContainer extends Component  {
 
     const {name} = this.state 
 
-    axios.post("http://localhost:3001/projects",{
+    axios.post("https://bugloggerapi.herokuapp.com/projects",{
       user: {
         name: name,
       }
