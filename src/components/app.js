@@ -25,6 +25,7 @@ export default class App extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     // this.setProjects = this.setProjects.bind(this);
+    //cant post projects or logs 
     this.setSelectedProject = this.setSelectedProject.bind(this);
   }
 
