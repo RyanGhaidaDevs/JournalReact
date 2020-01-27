@@ -111,7 +111,7 @@ class ProjectsContainer extends Component  {
     }, 
     { withCredentials: true }
     ).then( response => {
-      console.log(this.props)
+      console.log("response", response)
       this.setState({
         addProject: false
       })
