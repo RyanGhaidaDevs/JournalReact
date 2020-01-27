@@ -107,6 +107,7 @@ class ProjectsContainer extends Component  {
     axios.post("https://bugloggerapi.herokuapp.com/projects",{
       user: {
         name: name,
+        user_id: this.props.user.id
       }
     }, 
     { withCredentials: true }
