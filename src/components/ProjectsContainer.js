@@ -46,21 +46,11 @@ class ProjectsContainer extends Component  {
   }
 
 
-  // componentDidMount() {
-  //    axios.get("https://bugloggerapi.herokuapp.com/projects", {
-  //       user_id: this.props.user.id
-  //   }, { withCredentials: true }).then( data => this.setState({
-  //      projects: data.data
-  //    }), ()=>console.log(data))
-  // }
-
   componentDidMount() {
-
-    console.log("compdidmount", this.props.user.id)
-    axios.get("https://bugloggerapi.herokuapp.com/projects", {
-       user_id: this.props.user.id
-   }, { withCredentials: true }).then( data =>console.log(data))
- }
+     axios.get("https://bugloggerapi.herokuapp.com/projects", { withCredentials: true }).then( data => this.setState({
+       projects: data.data
+     }))
+  }
 
   handleSelect = (projectId) => {
     if(projectId === this.state.projectSelected.id){
@@ -115,10 +105,10 @@ class ProjectsContainer extends Component  {
     const {name} = this.state 
 
     axios.post("https://bugloggerapi.herokuapp.com/projects",{
-      
+      user: {
         name: name,
         user_id: this.props.user.id
-      
+      }
     }, 
     { withCredentials: true }
     ).then( response => {
