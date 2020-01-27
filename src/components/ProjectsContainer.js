@@ -53,7 +53,7 @@ class ProjectsContainer extends Component  {
       }
     }, { withCredentials: true }).then( data => this.setState({
        projects: data.data
-     }))
+     }), ()=>console.log(data))
   }
 
   handleSelect = (projectId) => {
