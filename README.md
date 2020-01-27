@@ -1,8 +1,8 @@
-#BugLogger 
+# BugLogger 
 
 Full-stack CRUD app built for bug logging and searching. I built this app for fun and to practice integrating a Ruby on Rails  API with a React project. 
 
-###Functionality
+### Functionality
 
 App has full user authentication and authorization via Rails' in-built sessions. 
 
@@ -12,9 +12,9 @@ A User can also view the logs of other Users and leave an 'upvote' or 'downvote'
 
 A User can search via keywords their own logs and that of other users. 
 
-###Technologies 
+### Technologies 
 
-##FrontEnd
+## FrontEnd
 
 React 
 React-Router verison: 4.3.1
@@ -22,7 +22,7 @@ Material UI
 Axios 
 
 
-##Backend 
+## Backend 
 
 Ruby version: 2.6.5
 Rails version: 6 
