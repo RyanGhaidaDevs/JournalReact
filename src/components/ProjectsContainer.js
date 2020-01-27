@@ -47,7 +47,11 @@ class ProjectsContainer extends Component  {
 
 
   componentDidMount() {
-     axios.get("https://bugloggerapi.herokuapp.com/projects", { withCredentials: true }).then( data => this.setState({
+     axios.get("https://bugloggerapi.herokuapp.com/projects", {
+      user: {
+        user_id: this.props.user.id
+      }
+    }, { withCredentials: true }).then( data => this.setState({
        projects: data.data
      }))
   }
