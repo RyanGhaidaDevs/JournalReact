@@ -86,7 +86,7 @@ export default class App extends Component {
       <div>
       <BrowserRouter>
         <Switch>
-        <Redirect from="/" exact to="/homepage" />
+        <Redirect from="/" exact to="/alllogs" />
         <Route 
             path={"/registration"} 
             render={ props => (
