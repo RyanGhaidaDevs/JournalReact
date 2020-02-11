@@ -29,7 +29,7 @@ export default class App extends Component {
     this.setSelectedProject = this.setSelectedProject.bind(this);
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.checkLoginStatus();
   }
 

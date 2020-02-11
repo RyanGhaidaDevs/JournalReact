@@ -146,13 +146,6 @@ const NavBar = (props) => {
         }
       </Toolbar>
     </AppBar>
-
-    {/* <Modal aria-labelledby="login" aria-describedby="login-modal" open={open}>
-      <div style={modalStyle} className={classes.paper}>
-        <Button className={classes.loginCloseButton} onClick={handleClose}> X </Button>
-        <Login  onClick={handleClose} handleLogin={props.handleLogin} />
-      </div>
-    </Modal> */}
   </div>
   );
 }
